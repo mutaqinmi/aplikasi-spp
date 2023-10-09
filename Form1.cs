@@ -24,10 +24,11 @@ namespace SPP
             login.Focus();
         }
 
-        public void logged_in()
+        public void logged_in(string username)
         {
             MessageBox.Show("Login Berhasil!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Visible = true;
+            label5.Text = username;
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -40,22 +41,30 @@ namespace SPP
 
             // ambil data petugas
             string data_petugas = "SELECT * FROM data_user";
-            MySqlCommand cmd = new MySqlCommand(data_petugas, conn);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            label7.Text = dt.Rows.Count.ToString();
+            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, conn);
+            MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
+            DataTable dt_petugas = new DataTable();
+            adapter_petugas.Fill(dt_petugas);
+            label7.Text = dt_petugas.Rows.Count.ToString();
 
             // ambil data siswa
             string data_siswa = "SELECT * FROM data_siswa";
-            MySqlCommand cmd2 = new MySqlCommand(data_siswa, conn);
-            MySqlDataAdapter adapter2 = new MySqlDataAdapter(cmd2);
-            DataTable dt2 = new DataTable();
-            adapter2.Fill(dt2);
-            label6.Text = dt2.Rows.Count.ToString();
+            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, conn);
+            MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
+            DataTable dt_siswa = new DataTable();
+            adapter_siswa.Fill(dt_siswa);
+            label6.Text = dt_siswa.Rows.Count.ToString();
+
+            // ambil data transaksi
+            string data_transaksi = "SELECT * FROM data_pembayaran";
+            MySqlCommand cmd_transaksi = new MySqlCommand(data_transaksi, conn);
+            MySqlDataAdapter adapter_transaksi = new MySqlDataAdapter(cmd_transaksi);
+            DataTable dt_transaksi = new DataTable();
+            adapter_transaksi.Fill(dt_transaksi);
+            label8.Text = dt_transaksi.Rows.Count.ToString();
 
             // tampilkan daftar siswa
-            dataGridView1.DataSource = dt2;
+            dataGridView1.DataSource = dt_siswa;
 
             // tutup database
             conn.Close();
@@ -71,22 +80,30 @@ namespace SPP
 
             // ambil data petugas
             string data_petugas = "SELECT * FROM data_user";
-            MySqlCommand cmd = new MySqlCommand(data_petugas, conn);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            label7.Text = dt.Rows.Count.ToString();
-            
+            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, conn);
+            MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
+            DataTable dt_petugas = new DataTable();
+            adapter_petugas.Fill(dt_petugas);
+            label7.Text = dt_petugas.Rows.Count.ToString();
+
             // ambil data siswa
             string data_siswa = "SELECT * FROM data_siswa";
-            MySqlCommand cmd2 = new MySqlCommand(data_siswa, conn);
-            MySqlDataAdapter adapter2 = new MySqlDataAdapter(cmd2);
-            DataTable dt2 = new DataTable();
-            adapter2.Fill(dt2);
-            label6.Text = dt2.Rows.Count.ToString();
+            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, conn);
+            MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
+            DataTable dt_siswa = new DataTable();
+            adapter_siswa.Fill(dt_siswa);
+            label6.Text = dt_siswa.Rows.Count.ToString();
+
+            // ambil data transaksi
+            string data_transaksi = "SELECT * FROM data_pembayaran";
+            MySqlCommand cmd_transaksi = new MySqlCommand(data_transaksi, conn);
+            MySqlDataAdapter adapter_transaksi = new MySqlDataAdapter(cmd_transaksi);
+            DataTable dt_transaksi = new DataTable();
+            adapter_transaksi.Fill(dt_transaksi);
+            label8.Text = dt_transaksi.Rows.Count.ToString();
 
             // tampilkan daftar siswa
-            dataGridView1.DataSource = dt2;
+            dataGridView1.DataSource = dt_siswa;
 
             // tutup database
             conn.Close();
@@ -95,6 +112,52 @@ namespace SPP
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // koneksi ke database
+            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = myConnectionString;
+            conn.Open();
+
+            // ambil data siswa dari search
+            string keywords = textBox1.Text;
+            string cari_data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + keywords + "' OR nis = '" + keywords + "' OR nama LIKE '%" + keywords + "%' OR id_kelas = '" + keywords + "' OR alamat LIKE '%" + keywords + "' OR no_telp = '" + keywords + "' OR id_spp = '" + keywords + "'";
+            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, conn);
+            MySqlDataAdapter adapter_cari_siswa = new MySqlDataAdapter(cmd_cari_siswa);
+            DataTable dt_cari_siswa = new DataTable();
+            adapter_cari_siswa.Fill(dt_cari_siswa);
+
+            // tampilkan daftar siswa
+            dataGridView1.DataSource = dt_cari_siswa;
+
+            // tutup database
+            conn.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // koneksi ke database
+            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = myConnectionString;
+            conn.Open();
+
+            // ambil data siswa dari search
+            string keywords = textBox1.Text;
+            string cari_data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + keywords + "' OR nis = '" + keywords + "' OR nama LIKE '%" + keywords + "%' OR id_kelas = '" + keywords + "' OR alamat LIKE '%" + keywords + "' OR no_telp = '" + keywords + "' OR id_spp = '" + keywords + "'";
+            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, conn);
+            MySqlDataAdapter adapter_cari_siswa = new MySqlDataAdapter(cmd_cari_siswa);
+            DataTable dt_cari_siswa = new DataTable();
+            adapter_cari_siswa.Fill(dt_cari_siswa);
+
+            // tampilkan daftar siswa
+            dataGridView1.DataSource = dt_cari_siswa;
+
+            // tutup database
+            conn.Close();
         }
     }
 }

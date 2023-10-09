@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto.Tls;
 
 namespace SPP
 {
@@ -49,7 +50,7 @@ namespace SPP
             {
                 if (textBox1.Text == dt.Rows[0]["username"].ToString() && textBox2.Text == dt.Rows[0]["password"].ToString())
                 {
-                    mainform.logged_in();
+                    mainform.logged_in(textBox1.Text);
                     this.Close();
                 } else
                 {

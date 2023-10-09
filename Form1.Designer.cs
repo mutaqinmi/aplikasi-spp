@@ -56,7 +56,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -210,7 +209,7 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -304,7 +303,6 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
-            this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label4);
             this.panel5.ForeColor = System.Drawing.Color.White;
@@ -312,14 +310,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(200, 100);
             this.panel5.TabIndex = 3;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Location = new System.Drawing.Point(132, 24);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(48, 51);
-            this.panel6.TabIndex = 5;
             // 
             // label5
             // 
@@ -351,6 +341,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Cari";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
@@ -358,6 +349,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(873, 26);
             this.textBox1.TabIndex = 6;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label9
             // 
@@ -443,7 +435,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label9;
     }
 }
