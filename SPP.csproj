@@ -112,6 +112,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TambahPetugas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TambahPetugas.Designer.cs">
+      <DependentUpon>TambahPetugas.cs</DependentUpon>
+    </Compile>
     <Compile Include="TambahSiswa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TambahPetugas.resx">
+      <DependentUpon>TambahPetugas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TambahSiswa.resx">
       <DependentUpon>TambahSiswa.cs</DependentUpon>
     </EmbeddedResource>

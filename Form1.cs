@@ -166,5 +166,12 @@ namespace SPP
             tambah_siswa.ShowDialog();
             tambah_siswa.Focus();
         }
+
+        private void tambahkanPetugasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tambah_petugas = new TambahPetugas();
+            tambah_petugas.ShowDialog();
+            tambah_petugas.Focus();
+        }
     }
 }

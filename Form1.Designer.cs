@@ -171,7 +171,7 @@
             this.lihatSemuaPetugasToolStripMenuItem,
             this.tambahkanPetugasToolStripMenuItem});
             this.petugasToolStripMenuItem.Name = "petugasToolStripMenuItem";
-            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.petugasToolStripMenuItem.Text = "Petugas";
             // 
             // lihatSemuaPetugasToolStripMenuItem
@@ -185,6 +185,7 @@
             this.tambahkanPetugasToolStripMenuItem.Name = "tambahkanPetugasToolStripMenuItem";
             this.tambahkanPetugasToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.tambahkanPetugasToolStripMenuItem.Text = "Tambahkan Petugas";
+            this.tambahkanPetugasToolStripMenuItem.Click += new System.EventHandler(this.tambahkanPetugasToolStripMenuItem_Click);
             // 
             // akunToolStripMenuItem
             // 
