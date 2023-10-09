@@ -41,3 +41,4 @@ C:\Users\PC-07\source\repos\SPP\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\PC-07\source\repos\SPP\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\PC-07\source\repos\SPP\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\PC-07\source\repos\SPP\obj\Debug\SPP.csproj.CopyComplete
+C:\Users\PC-07\source\repos\SPP\obj\Debug\SPP.TambahSiswa.resources

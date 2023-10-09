@@ -159,5 +159,12 @@ namespace SPP
             // tutup database
             conn.Close();
         }
+
+        private void tambahkanSiswaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tambah_siswa = new TambahSiswa();
+            tambah_siswa.ShowDialog();
+            tambah_siswa.Focus();
+        }
     }
 }

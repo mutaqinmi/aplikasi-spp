@@ -149,7 +149,7 @@
             this.lihatSemuaSiswaToolStripMenuItem,
             this.tambahkanSiswaToolStripMenuItem});
             this.siswaToolStripMenuItem.Name = "siswaToolStripMenuItem";
-            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.siswaToolStripMenuItem.Text = "Siswa";
             // 
             // lihatSemuaSiswaToolStripMenuItem
@@ -161,8 +161,9 @@
             // tambahkanSiswaToolStripMenuItem
             // 
             this.tambahkanSiswaToolStripMenuItem.Name = "tambahkanSiswaToolStripMenuItem";
-            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tambahkanSiswaToolStripMenuItem.Text = "Tambahkan Siswa";
+            this.tambahkanSiswaToolStripMenuItem.Click += new System.EventHandler(this.tambahkanSiswaToolStripMenuItem_Click);
             // 
             // petugasToolStripMenuItem
             // 
