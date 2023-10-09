@@ -32,46 +32,69 @@ namespace SPP
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // koneksi ke database
             string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
             MySqlConnection conn = new MySqlConnection();
             conn.ConnectionString = myConnectionString;
             conn.Open();
+
+            // ambil data petugas
             string data_petugas = "SELECT * FROM data_user";
-            string data_siswa = "SELECT * FROM data_siswa";
             MySqlCommand cmd = new MySqlCommand(data_petugas, conn);
-            MySqlCommand cmd2 = new MySqlCommand(data_siswa, conn);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            MySqlDataAdapter adapter2 = new MySqlDataAdapter(cmd2);
             DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
             adapter.Fill(dt);
-            adapter2.Fill(dt2);
             label7.Text = dt.Rows.Count.ToString();
+
+            // ambil data siswa
+            string data_siswa = "SELECT * FROM data_siswa";
+            MySqlCommand cmd2 = new MySqlCommand(data_siswa, conn);
+            MySqlDataAdapter adapter2 = new MySqlDataAdapter(cmd2);
+            DataTable dt2 = new DataTable();
+            adapter2.Fill(dt2);
             label6.Text = dt2.Rows.Count.ToString();
+
+            // tampilkan daftar siswa
             dataGridView1.DataSource = dt2;
+
+            // tutup database
             conn.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // koneksi ke database
             string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
             MySqlConnection conn = new MySqlConnection();
             conn.ConnectionString = myConnectionString;
             conn.Open();
+
+            // ambil data petugas
             string data_petugas = "SELECT * FROM data_user";
-            string data_siswa = "SELECT * FROM data_siswa";
             MySqlCommand cmd = new MySqlCommand(data_petugas, conn);
-            MySqlCommand cmd2 = new MySqlCommand(data_siswa, conn);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            MySqlDataAdapter adapter2 = new MySqlDataAdapter(cmd2);
             DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
             adapter.Fill(dt);
-            adapter2.Fill(dt2);
             label7.Text = dt.Rows.Count.ToString();
+            
+            // ambil data siswa
+            string data_siswa = "SELECT * FROM data_siswa";
+            MySqlCommand cmd2 = new MySqlCommand(data_siswa, conn);
+            MySqlDataAdapter adapter2 = new MySqlDataAdapter(cmd2);
+            DataTable dt2 = new DataTable();
+            adapter2.Fill(dt2);
             label6.Text = dt2.Rows.Count.ToString();
+
+            // tampilkan daftar siswa
             dataGridView1.DataSource = dt2;
+
+            // tutup database
             conn.Close();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
