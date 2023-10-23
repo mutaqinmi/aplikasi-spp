@@ -63,5 +63,10 @@ namespace SPP
             }
             conn.Close();
         }
+
+        private void LogIn_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
