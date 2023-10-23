@@ -149,19 +149,20 @@
             this.lihatSemuaSiswaToolStripMenuItem,
             this.tambahkanSiswaToolStripMenuItem});
             this.siswaToolStripMenuItem.Name = "siswaToolStripMenuItem";
-            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.siswaToolStripMenuItem.Text = "Siswa";
             // 
             // lihatSemuaSiswaToolStripMenuItem
             // 
             this.lihatSemuaSiswaToolStripMenuItem.Name = "lihatSemuaSiswaToolStripMenuItem";
-            this.lihatSemuaSiswaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.lihatSemuaSiswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lihatSemuaSiswaToolStripMenuItem.Text = "Lihat Semua Siswa";
+            this.lihatSemuaSiswaToolStripMenuItem.Click += new System.EventHandler(this.lihatSemuaSiswaToolStripMenuItem_Click);
             // 
             // tambahkanSiswaToolStripMenuItem
             // 
             this.tambahkanSiswaToolStripMenuItem.Name = "tambahkanSiswaToolStripMenuItem";
-            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tambahkanSiswaToolStripMenuItem.Text = "Tambahkan Siswa";
             this.tambahkanSiswaToolStripMenuItem.Click += new System.EventHandler(this.tambahkanSiswaToolStripMenuItem_Click);
             // 
@@ -171,7 +172,7 @@
             this.lihatSemuaPetugasToolStripMenuItem,
             this.tambahkanPetugasToolStripMenuItem});
             this.petugasToolStripMenuItem.Name = "petugasToolStripMenuItem";
-            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.petugasToolStripMenuItem.Text = "Petugas";
             // 
             // lihatSemuaPetugasToolStripMenuItem
@@ -179,6 +180,7 @@
             this.lihatSemuaPetugasToolStripMenuItem.Name = "lihatSemuaPetugasToolStripMenuItem";
             this.lihatSemuaPetugasToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.lihatSemuaPetugasToolStripMenuItem.Text = "Lihat Semua Petugas";
+            this.lihatSemuaPetugasToolStripMenuItem.Click += new System.EventHandler(this.lihatSemuaPetugasToolStripMenuItem_Click);
             // 
             // tambahkanPetugasToolStripMenuItem
             // 

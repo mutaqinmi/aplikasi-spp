@@ -98,6 +98,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataPetugas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataPetugas.Designer.cs">
+      <DependentUpon>DataPetugas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSiswa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSiswa.Designer.cs">
+      <DependentUpon>DataSiswa.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailSiswa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +142,18 @@
     <Compile Include="TambahSiswa.Designer.cs">
       <DependentUpon>TambahSiswa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update.Designer.cs">
+      <DependentUpon>Update.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DataPetugas.resx">
+      <DependentUpon>DataPetugas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSiswa.resx">
+      <DependentUpon>DataSiswa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailSiswa.resx">
       <DependentUpon>DetailSiswa.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TambahSiswa.resx">
       <DependentUpon>TambahSiswa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update.resx">
+      <DependentUpon>Update.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
