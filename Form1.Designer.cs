@@ -149,7 +149,7 @@
             this.lihatSemuaSiswaToolStripMenuItem,
             this.tambahkanSiswaToolStripMenuItem});
             this.siswaToolStripMenuItem.Name = "siswaToolStripMenuItem";
-            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.siswaToolStripMenuItem.Text = "Siswa";
             // 
             // lihatSemuaSiswaToolStripMenuItem
@@ -161,7 +161,7 @@
             // tambahkanSiswaToolStripMenuItem
             // 
             this.tambahkanSiswaToolStripMenuItem.Name = "tambahkanSiswaToolStripMenuItem";
-            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.tambahkanSiswaToolStripMenuItem.Text = "Tambahkan Siswa";
             this.tambahkanSiswaToolStripMenuItem.Click += new System.EventHandler(this.tambahkanSiswaToolStripMenuItem_Click);
             // 
@@ -171,7 +171,7 @@
             this.lihatSemuaPetugasToolStripMenuItem,
             this.tambahkanPetugasToolStripMenuItem});
             this.petugasToolStripMenuItem.Name = "petugasToolStripMenuItem";
-            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.petugasToolStripMenuItem.Text = "Petugas";
             // 
             // lihatSemuaPetugasToolStripMenuItem
@@ -301,6 +301,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1024, 382);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // panel5
             // 

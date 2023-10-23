@@ -98,6 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetailSiswa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailSiswa.Designer.cs">
+      <DependentUpon>DetailSiswa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     <Compile Include="TambahSiswa.Designer.cs">
       <DependentUpon>TambahSiswa.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DetailSiswa.resx">
+      <DependentUpon>DetailSiswa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

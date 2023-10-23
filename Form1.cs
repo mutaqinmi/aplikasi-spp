@@ -173,5 +173,36 @@ namespace SPP
             tambah_petugas.ShowDialog();
             tambah_petugas.Focus();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // MessageBox.Show(dataGridView1.SelectedCells[0].Value.ToString());
+
+            // koneksi ke database
+            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = myConnectionString;
+            conn.Open();
+
+            // ambil data siswa yang di select
+            string data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR nis = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR nama LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "%' OR id_kelas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR alamat LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR no_telp = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR id_spp = '" + dataGridView1.SelectedCells[0].Value.ToString() + "'";
+            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, conn);
+            MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
+            DataTable dt_siswa = new DataTable();
+            adapter_siswa.Fill(dt_siswa);
+
+            // memasukkan data
+            string id = dt_siswa.Rows[0]["id].ToString();
+            string nisn = dt_siswa.Rows[0]["nisn"].ToString();
+            string nis = dt_siswa.Rows[0]["nis"].ToString();
+            string nama = dt_siswa.Rows[0]["nama"].ToString();
+            string id_kelas = dt_siswa.Rows[0]["id_kelas"].ToString();
+            string alamat = dt_siswa.Rows[0]["alamat"].ToString();
+            string no_telp = dt_siswa.Rows[0]["no_telp"].ToString();
+            string id_spp = dt_siswa.Rows[0]["id_spp"].ToString();
+
+            var detail_siswa = new DetailSiswa(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp);
+            detail_siswa.ShowDialog();
+        }
     }
 }
