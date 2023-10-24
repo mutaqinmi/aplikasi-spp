@@ -21,11 +21,13 @@ namespace SPP
         {
             InitializeComponent();
 
+            // menentukan main form menjadi login form
             this.mainform = main;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            // membuat kondisi checkbox pada password
             if(checkBox1.Checked)
             {
                 textBox2.UseSystemPasswordChar = false;            
@@ -37,15 +39,14 @@ namespace SPP
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
+            // mengambil data petugas di database
             string strQuery = "SELECT * FROM data_user WHERE USERNAME = '" + textBox1.Text + "' AND PASSWORD = '" + textBox2.Text + "'";
-            MySqlCommand cmd = new MySqlCommand(strQuery, conn);
+            MySqlCommand cmd = new MySqlCommand(strQuery, Program.Conn);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
+
+            // mengecek data apakah tersedia
             if (dt.Rows.Count == 1)
             {
                 if (textBox1.Text == dt.Rows[0]["username"].ToString() && textBox2.Text == dt.Rows[0]["password"].ToString())
@@ -61,12 +62,7 @@ namespace SPP
             {
                 MessageBox.Show("Username atau password salah!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            conn.Close();
-        }
-
-        private void LogIn_Load(object sender, EventArgs e)
-        {
-
+            Program.Conn.Close();
         }
     }
 }
