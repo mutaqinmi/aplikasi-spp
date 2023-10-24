@@ -48,13 +48,9 @@ namespace SPP
             var confirm = MessageBox.Show("Apakah anda yakin mengedit data siswa " + textBox3.Text + "?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm == DialogResult.Yes)
             {
-                Program.Conn.Open();
                 cmd_update_siswa.ExecuteNonQuery();
                 MessageBox.Show("Data berhasil diupdate!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            // tutup database
-            Program.Conn.Close();
             this.Close();
         }
     }

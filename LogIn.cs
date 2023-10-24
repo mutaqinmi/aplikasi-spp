@@ -62,7 +62,6 @@ namespace SPP
             {
                 MessageBox.Show("Username atau password salah!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Program.Conn.Close();
         }
     }
 }

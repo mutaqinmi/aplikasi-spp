@@ -18,109 +18,58 @@ namespace SPP
             InitializeComponent();
         }
 
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        public void refreshData()
         {
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
             // ambil data petugas
             string data_petugas = "SELECT * FROM data_user";
-            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, conn);
+            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, Program.Conn.Connection);
             MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
             DataTable dt_petugas = new DataTable();
             adapter_petugas.Fill(dt_petugas);
 
             // tampilkan daftar petugas
             dataGridView1.DataSource = dt_petugas;
+        }
 
-            // tutup database
-            conn.Close();
+        public void search()
+        {
+            // ambil data petugas dari search
+            string keywords = textBox1.Text;
+            string cari_data_petugas = "SELECT * FROM data_user WHERE id_petugas = '" + keywords + "' OR username LIKE '%" + keywords + "%' OR password = '" + keywords + "' OR nama_petugas LIKE '%" + keywords + "%' OR jenis_petugas = '" + keywords + "'";
+            MySqlCommand cmd_cari_petugas = new MySqlCommand(cari_data_petugas, Program.Conn.Connection);
+            MySqlDataAdapter adapter_cari_petugas = new MySqlDataAdapter(cmd_cari_petugas);
+            DataTable dt_cari_petugas = new DataTable();
+            adapter_cari_petugas.Fill(dt_cari_petugas);
+
+            // tampilkan daftar siswa
+            dataGridView1.DataSource = dt_cari_petugas;
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            refreshData();
         }
 
         private void DataPetugas_Load(object sender, EventArgs e)
         {
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
-            // ambil data petugas
-            string data_petugas = "SELECT * FROM data_user";
-            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, conn);
-            MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
-            DataTable dt_petugas = new DataTable();
-            adapter_petugas.Fill(dt_petugas);
-
-            // tampilkan daftar petugas
-            dataGridView1.DataSource = dt_petugas;
-
-            // tutup database
-            conn.Close();
+            refreshData();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
-            // ambil data petugas dari search
-            string keywords = textBox1.Text;
-            string cari_data_petugas = "SELECT * FROM data_user WHERE id_petugas = '" + keywords + "' OR username LIKE '%" + keywords + "%' OR password = '" + keywords + "' OR nama_petugas LIKE '%" + keywords + "%' OR jenis_petugas = '" + keywords + "'";
-            MySqlCommand cmd_cari_petugas = new MySqlCommand(cari_data_petugas, conn);
-            MySqlDataAdapter adapter_cari_petugas = new MySqlDataAdapter(cmd_cari_petugas);
-            DataTable dt_cari_petugas = new DataTable();
-            adapter_cari_petugas.Fill(dt_cari_petugas);
-
-            // tampilkan daftar siswa
-            dataGridView1.DataSource = dt_cari_petugas;
-
-            // tutup database
-            conn.Close();
+            search();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
-            // ambil data petugas dari search
-            string keywords = textBox1.Text;
-            string cari_data_petugas = "SELECT * FROM data_user WHERE id_petugas = '" + keywords + "' OR username LIKE '%" + keywords + "%' OR password = '" + keywords + "' OR nama_petugas LIKE '%" + keywords + "%' OR jenis_petugas = '" + keywords + "'";
-            MySqlCommand cmd_cari_petugas = new MySqlCommand(cari_data_petugas, conn);
-            MySqlDataAdapter adapter_cari_petugas = new MySqlDataAdapter(cmd_cari_petugas);
-            DataTable dt_cari_petugas = new DataTable();
-            adapter_cari_petugas.Fill(dt_cari_petugas);
-
-            // tampilkan daftar siswa
-            dataGridView1.DataSource = dt_cari_petugas;
-
-            // tutup database
-            conn.Close();
+            search();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // MessageBox.Show(dataGridView1.SelectedCells[0].Value.ToString());
-
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
             // ambil data petugas yang di select
-            string data_petugas = "SELECT * FROM data_user WHERE id_petugas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR username = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR password LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "%' OR nama_petugas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR jenis_petugas LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "'";
-            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, conn);
+            string data_petugas = "SELECT * FROM data_user WHERE id_petugas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR username = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR password LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "%' OR nama_petugas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "'";
+            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, Program.Conn.Connection);
             MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
             DataTable dt_petugas = new DataTable();
             adapter_petugas.Fill(dt_petugas);

@@ -54,13 +54,9 @@ namespace SPP
             var confirm = MessageBox.Show("Apakah anda yakin menghapus data siswa " + label6.Text + "?", "Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm == DialogResult.Yes)
             {
-                Program.Conn.Open();
                 cmd_hapus_siswa.ExecuteNonQuery();
                 MessageBox.Show("Data berhasil dihapus!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            // menutup database dan window
-            Program.Conn.Close();
             this.Close();
         }
 

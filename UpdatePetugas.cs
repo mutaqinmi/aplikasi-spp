@@ -14,10 +14,12 @@ namespace SPP
 {
     public partial class UpdatePetugas : Form
     {
-        public UpdatePetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas)
+        public DetailPetugas mainform = null;
+        public UpdatePetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas, DetailPetugas main)
         {
             InitializeComponent();
 
+            // mengisi value textbox
             textBox4.Text = id_petugas;
             textBox1.Text = username;
             textBox2.Text = password;
@@ -33,16 +35,14 @@ namespace SPP
                     break;
             }
             comboBox1.SelectedIndex = int.Parse(jenis);
+
+            // jadikan window sebagai utama
+            this.mainform = main;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
+            // mengambil data dari textbox
             var id_petugas = textBox4.Text;
             var username = textBox1.Text;
             var password = textBox2.Text;
@@ -51,14 +51,13 @@ namespace SPP
 
             // update petugas
             string update_petugas = "UPDATE data_user SET id_petugas = '" + id_petugas + "', username = '" + username + "', password = '" + password + "', nama_petugas = '" + nama_petugas + "', jenis_petugas = '" + jenis_petugas + "' WHERE id_petugas = '" + id_petugas + "'";
-            MySqlCommand cmd_update_petugas = new MySqlCommand(update_petugas, conn);
+            MySqlCommand cmd_update_petugas = new MySqlCommand(update_petugas, Program.Conn.Connection);
             var confirm = MessageBox.Show("Apakah anda yakin mengedit data petugas " + textBox3.Text + "?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm == DialogResult.Yes)
             {
                 cmd_update_petugas.ExecuteNonQuery();
                 MessageBox.Show("Data berhasil diupdate!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            conn.Close();
             this.Close();
         }
     }
