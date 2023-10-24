@@ -80,6 +80,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 0;
+            this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
             // label6
             // 
@@ -149,20 +150,20 @@
             this.lihatSemuaSiswaToolStripMenuItem,
             this.tambahkanSiswaToolStripMenuItem});
             this.siswaToolStripMenuItem.Name = "siswaToolStripMenuItem";
-            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.siswaToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.siswaToolStripMenuItem.Text = "Siswa";
             // 
             // lihatSemuaSiswaToolStripMenuItem
             // 
             this.lihatSemuaSiswaToolStripMenuItem.Name = "lihatSemuaSiswaToolStripMenuItem";
-            this.lihatSemuaSiswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lihatSemuaSiswaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.lihatSemuaSiswaToolStripMenuItem.Text = "Lihat Semua Siswa";
             this.lihatSemuaSiswaToolStripMenuItem.Click += new System.EventHandler(this.lihatSemuaSiswaToolStripMenuItem_Click);
             // 
             // tambahkanSiswaToolStripMenuItem
             // 
             this.tambahkanSiswaToolStripMenuItem.Name = "tambahkanSiswaToolStripMenuItem";
-            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tambahkanSiswaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.tambahkanSiswaToolStripMenuItem.Text = "Tambahkan Siswa";
             this.tambahkanSiswaToolStripMenuItem.Click += new System.EventHandler(this.tambahkanSiswaToolStripMenuItem_Click);
             // 
@@ -172,7 +173,7 @@
             this.lihatSemuaPetugasToolStripMenuItem,
             this.tambahkanPetugasToolStripMenuItem});
             this.petugasToolStripMenuItem.Name = "petugasToolStripMenuItem";
-            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.petugasToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.petugasToolStripMenuItem.Text = "Petugas";
             // 
             // lihatSemuaPetugasToolStripMenuItem
@@ -234,6 +235,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 100);
             this.panel2.TabIndex = 1;
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
             // 
             // label7
             // 
@@ -264,6 +266,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 100);
             this.panel3.TabIndex = 2;
+            this.panel3.Click += new System.EventHandler(this.panel3_Click);
             // 
             // label8
             // 

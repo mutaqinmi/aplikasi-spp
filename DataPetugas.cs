@@ -27,7 +27,7 @@ namespace SPP
             conn.Open();
 
             // ambil data petugas
-            string data_petugas = "SELECT * FROM data_petugas";
+            string data_petugas = "SELECT * FROM data_user";
             MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, conn);
             MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
             DataTable dt_petugas = new DataTable();

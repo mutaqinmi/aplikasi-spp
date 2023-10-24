@@ -45,7 +45,7 @@ namespace SPP
             // update siswa
             string update_siswa = "UPDATE data_siswa SET nisn = '" + nisn + "', nis = '" + nis + "', nama = '" + nama + "', id_kelas = '" + kelas + "', alamat = '" + alamat + "', no_telp = '" + telepon + "', id_spp = '" + id_spp + "' WHERE nisn = '" + nisn + "'";
             MySqlCommand cmd_update_siswa = new MySqlCommand(update_siswa, conn);
-            var confirm = MessageBox.Show("Apakah anda yakin mengedit data siswa " + label6.Text + "?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var confirm = MessageBox.Show("Apakah anda yakin mengedit data siswa " + textBox3.Text + "?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm == DialogResult.Yes)
             {
                 cmd_update_siswa.ExecuteNonQuery();

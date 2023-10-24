@@ -92,3 +92,5 @@ C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DetailSiswa.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.Update.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DataSiswa.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DataPetugas.resources
+C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DetailPetugas.resources
+C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.UpdatePetugas.resources

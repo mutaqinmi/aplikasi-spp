@@ -215,5 +215,22 @@ namespace SPP
             var lihat_petugas = new DataPetugas();
             lihat_petugas.ShowDialog();
         }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+            var lihat_petugas = new DataPetugas();
+            lihat_petugas.ShowDialog();
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            var lihat_siswa = new DataSiswa();
+            lihat_siswa.ShowDialog();
+        }
     }
 }
