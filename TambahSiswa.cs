@@ -20,12 +20,7 @@ namespace SPP
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
+            // ambil data dari textbox
             var nisn = textBox1.Text;
             var nis = textBox2.Text;
             var nama = textBox3.Text;
@@ -35,10 +30,11 @@ namespace SPP
 
             // tambah data siswa
             string insert_siswa = "INSERT INTO data_siswa(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp) VALUES ('" + nisn + "', '" + nis + "', '" + nama + "', '" + kelas + "', '" + alamat + "', '" + telepon + "', '" + 1 + "')";
-            MySqlCommand cmd_insert_siswa = new MySqlCommand(insert_siswa, conn);
+            MySqlCommand cmd_insert_siswa = new MySqlCommand(insert_siswa, Program.Conn.Connection);
+            Program.Conn.Open();
             cmd_insert_siswa.ExecuteNonQuery();
             MessageBox.Show("Data berhasil ditambahkan!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            conn.Close();
+            Program.Conn.Close();
             this.Close();
         }
     }

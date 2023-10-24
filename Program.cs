@@ -10,7 +10,7 @@ namespace SPP
     internal static class Program
     {
         // membuat fungsi koneksi
-        public static MySqlConnection Conn = new MySqlConnection("server=localhost;uid=root;pwd=root;database=spp_app");
+        public static DatabaseConnection Conn = new DatabaseConnection("server=localhost;uid=root;pwd=root;database=spp_app");
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

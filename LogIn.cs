@@ -41,7 +41,7 @@ namespace SPP
         {
             // mengambil data petugas di database
             string strQuery = "SELECT * FROM data_user WHERE USERNAME = '" + textBox1.Text + "' AND PASSWORD = '" + textBox2.Text + "'";
-            MySqlCommand cmd = new MySqlCommand(strQuery, Program.Conn);
+            MySqlCommand cmd = new MySqlCommand(strQuery, Program.Conn.Connection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);

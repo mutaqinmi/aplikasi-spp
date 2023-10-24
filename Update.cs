@@ -13,7 +13,9 @@ namespace SPP
 {
     public partial class Update : Form
     {
-        public Update(string nisn, string nis, string nama, string kelas, string alamat, string no_telp, string id_spp)
+        private DetailSiswa mainform = null;
+
+        public Update(string nisn, string nis, string nama, string kelas, string alamat, string no_telp, string id_spp, DetailSiswa main)
         {
             InitializeComponent();
 
@@ -24,16 +26,14 @@ namespace SPP
             textBox4.Text = alamat;
             textBox5.Text = no_telp;
             textBox6.Text = id_spp;
+
+            // menjadikan window utama
+            this.mainform = main;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // koneksi ke database
-            string myConnectionString = "server=localhost;uid=root;pwd=root;database=spp_app";
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
-
+            // ambil data
             var nisn = textBox1.Text;
             var nis = textBox2.Text;
             var nama = textBox3.Text;
@@ -44,14 +44,17 @@ namespace SPP
 
             // update siswa
             string update_siswa = "UPDATE data_siswa SET nisn = '" + nisn + "', nis = '" + nis + "', nama = '" + nama + "', id_kelas = '" + kelas + "', alamat = '" + alamat + "', no_telp = '" + telepon + "', id_spp = '" + id_spp + "' WHERE nisn = '" + nisn + "'";
-            MySqlCommand cmd_update_siswa = new MySqlCommand(update_siswa, conn);
+            MySqlCommand cmd_update_siswa = new MySqlCommand(update_siswa, Program.Conn.Connection);
             var confirm = MessageBox.Show("Apakah anda yakin mengedit data siswa " + textBox3.Text + "?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm == DialogResult.Yes)
             {
+                Program.Conn.Open();
                 cmd_update_siswa.ExecuteNonQuery();
                 MessageBox.Show("Data berhasil diupdate!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            conn.Close();
+
+            // tutup database
+            Program.Conn.Close();
             this.Close();
         }
     }

@@ -32,7 +32,7 @@ namespace SPP
         {
             // ambil data petugas
             string data_petugas = "SELECT * FROM data_user";
-            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, Program.Conn);
+            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, Program.Conn.Connection);
             MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
             DataTable dt_petugas = new DataTable();
             adapter_petugas.Fill(dt_petugas);
@@ -40,7 +40,7 @@ namespace SPP
 
             // ambil data siswa
             string data_siswa = "SELECT * FROM data_siswa";
-            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, Program.Conn);
+            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, Program.Conn.Connection);
             MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
             DataTable dt_siswa = new DataTable();
             adapter_siswa.Fill(dt_siswa);
@@ -48,7 +48,7 @@ namespace SPP
 
             // ambil data transaksi
             string data_transaksi = "SELECT * FROM data_pembayaran";
-            MySqlCommand cmd_transaksi = new MySqlCommand(data_transaksi, Program.Conn);
+            MySqlCommand cmd_transaksi = new MySqlCommand(data_transaksi, Program.Conn.Connection);
             MySqlDataAdapter adapter_transaksi = new MySqlDataAdapter(cmd_transaksi);
             DataTable dt_transaksi = new DataTable();
             adapter_transaksi.Fill(dt_transaksi);
@@ -60,7 +60,6 @@ namespace SPP
             // tutup database
             Program.Conn.Close();
         }
-
 
         // fungsi menampilkan data siswa
         public void showSiswa()
@@ -107,7 +106,7 @@ namespace SPP
             // ambil data siswa dari search
             string keywords = textBox1.Text;
             string cari_data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + keywords + "' OR nis = '" + keywords + "' OR nama LIKE '%" + keywords + "%' OR id_kelas = '" + keywords + "' OR alamat LIKE '%" + keywords + "' OR no_telp = '" + keywords + "' OR id_spp = '" + keywords + "'";
-            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, Program.Conn);
+            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, Program.Conn.Connection);
             MySqlDataAdapter adapter_cari_siswa = new MySqlDataAdapter(cmd_cari_siswa);
             DataTable dt_cari_siswa = new DataTable();
             adapter_cari_siswa.Fill(dt_cari_siswa);
@@ -124,7 +123,7 @@ namespace SPP
             // ambil data siswa dari search
             string keywords = textBox1.Text;
             string cari_data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + keywords + "' OR nis = '" + keywords + "' OR nama LIKE '%" + keywords + "%' OR id_kelas = '" + keywords + "' OR alamat LIKE '%" + keywords + "' OR no_telp = '" + keywords + "' OR id_spp = '" + keywords + "'";
-            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, Program.Conn);
+            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, Program.Conn.Connection);
             MySqlDataAdapter adapter_cari_siswa = new MySqlDataAdapter(cmd_cari_siswa);
             DataTable dt_cari_siswa = new DataTable();
             adapter_cari_siswa.Fill(dt_cari_siswa);
@@ -157,7 +156,7 @@ namespace SPP
         {
             // ambil data siswa yang di klik
             string data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR nis = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR nama LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "%' OR id_kelas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR alamat LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR no_telp = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR id_spp = '" + dataGridView1.SelectedCells[0].Value.ToString() + "'";
-            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, Program.Conn);
+            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, Program.Conn.Connection);
             MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
             DataTable dt_siswa = new DataTable();
             adapter_siswa.Fill(dt_siswa);
