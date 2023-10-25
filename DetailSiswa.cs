@@ -22,19 +22,13 @@ namespace SPP
             string kelas = "";
 
             // ambil data kelas
-            string data_kelas = "SELECT * FROM data_kelas";
+            string data_kelas = "SELECT * FROM data_kelas WHERE id_kelas = '" + id_kelas + "'";
             MySqlCommand cmd_kelas = new MySqlCommand(data_kelas, Program.Conn.Connection);
             MySqlDataAdapter adapter_kelas = new MySqlDataAdapter(cmd_kelas);
             DataTable dt_kelas = new DataTable();
             adapter_kelas.Fill(dt_kelas);
-
-            for (var i = 0; i <= dt_kelas.Rows.Count; i++)
-            {
-                if (i <= int.Parse(id_kelas) - 1)
-                {
-                    kelas = dt_kelas.Rows[i]["nama_kelas"].ToString();
-                }
-            }
+            
+            kelas = dt_kelas.Rows[0]["nama_kelas"].ToString();
 
             label4.Text = nisn;
             label5.Text = nis;
