@@ -13,6 +13,8 @@ namespace SPP
 {
     public partial class DetailSiswa : Form
     {
+        public SQLQuery sqlquery = new SQLQuery();
+
         public DetailSiswa(string nisn, string nis, string nama, string id_kelas, string alamat, string no_telp, string id_spp)
         {
             InitializeComponent();
@@ -22,13 +24,13 @@ namespace SPP
             string kelas = "";
 
             // ambil data kelas
-            string data_kelas = "SELECT * FROM data_kelas WHERE id_kelas = '" + id_kelas + "'";
-            MySqlCommand cmd_kelas = new MySqlCommand(data_kelas, Program.Conn.Connection);
-            MySqlDataAdapter adapter_kelas = new MySqlDataAdapter(cmd_kelas);
-            DataTable dt_kelas = new DataTable();
-            adapter_kelas.Fill(dt_kelas);
-            
-            kelas = dt_kelas.Rows[0]["nama_kelas"].ToString();
+            for(int i = 0; i <= sqlquery.selectAll("data_kelas").Rows.Count; i++)
+            {
+                if(i <= int.Parse(id_kelas) - 1)
+                {
+                    kelas = sqlquery.selectAll("data_kelas").Rows[i]["nama_kelas"].ToString();
+                }
+            }
 
             label4.Text = nisn;
             label5.Text = nis;
@@ -43,14 +45,7 @@ namespace SPP
         private void button1_Click(object sender, EventArgs e)
         {
             // hapus siswa
-            string hapus_siswa = "DELETE FROM data_siswa WHERE nisn = '" + label4.Text + "'";
-            MySqlCommand cmd_hapus_siswa = new MySqlCommand(hapus_siswa, Program.Conn.Connection);
-            var confirm = MessageBox.Show("Apakah anda yakin menghapus data siswa " + label6.Text + "?", "Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirm == DialogResult.Yes)
-            {
-                cmd_hapus_siswa.ExecuteNonQuery();
-                MessageBox.Show("Data berhasil dihapus!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            sqlquery.deleteData("data_siswa", "nisn", label4.Text);
             this.Close();
         }
 

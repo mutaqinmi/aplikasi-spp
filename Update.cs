@@ -14,6 +14,7 @@ namespace SPP
     public partial class Update : Form
     {
         private DetailSiswa mainform = null;
+        public SQLQuery sqlquery = new SQLQuery();
 
         public Update(string nisn, string nis, string nama, string kelas, string alamat, string no_telp, string id_spp, DetailSiswa main)
         {
@@ -43,14 +44,7 @@ namespace SPP
             var id_spp = textBox6.Text;
 
             // update siswa
-            string update_siswa = "UPDATE data_siswa SET nisn = '" + nisn + "', nis = '" + nis + "', nama = '" + nama + "', id_kelas = '" + kelas + "', alamat = '" + alamat + "', no_telp = '" + telepon + "', id_spp = '" + id_spp + "' WHERE nisn = '" + nisn + "'";
-            MySqlCommand cmd_update_siswa = new MySqlCommand(update_siswa, Program.Conn.Connection);
-            var confirm = MessageBox.Show("Apakah anda yakin mengedit data siswa " + textBox3.Text + "?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirm == DialogResult.Yes)
-            {
-                cmd_update_siswa.ExecuteNonQuery();
-                MessageBox.Show("Data berhasil diupdate!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            sqlquery.updateSiswa(nisn, nis, nama, kelas, alamat, telepon, id_spp);
             this.Close();
         }
     }

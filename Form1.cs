@@ -14,6 +14,8 @@ namespace SPP
 {
     public partial class Form1 : Form
     {
+        public SQLQuery sqlquery = new SQLQuery();
+
         public Form1()
         {
             InitializeComponent();
@@ -31,41 +33,22 @@ namespace SPP
         public void refreshData ()
         {
             // ambil data petugas
-            string data_petugas = "SELECT * FROM data_user";
-            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, Program.Conn.Connection);
-            MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
-            DataTable dt_petugas = new DataTable();
-            adapter_petugas.Fill(dt_petugas);
-            label7.Text = dt_petugas.Rows.Count.ToString();
+            label7.Text = sqlquery.selectAll("data_user").Rows.Count.ToString();
 
             // ambil data siswa
-            SQLQuery select_siswa = new SQLQuery();
-            label6.Text = select_siswa.selectAll("data_siswa").Rows.Count.ToString();
+            label6.Text = sqlquery.selectAll("data_siswa").Rows.Count.ToString();
 
             // ambil data transaksi
-            string data_transaksi = "SELECT * FROM data_pembayaran";
-            MySqlCommand cmd_transaksi = new MySqlCommand(data_transaksi, Program.Conn.Connection);
-            MySqlDataAdapter adapter_transaksi = new MySqlDataAdapter(cmd_transaksi);
-            DataTable dt_transaksi = new DataTable();
-            adapter_transaksi.Fill(dt_transaksi);
-            label8.Text = dt_transaksi.Rows.Count.ToString();
+            label8.Text = sqlquery.selectAll("data_pembayaran").Rows.Count.ToString();
 
             // tampilkan daftar siswa
-            dataGridView1.DataSource = select_siswa.selectAll("data_siswa");
+            dataGridView1.DataSource = sqlquery.selectAll("data_siswa");
         }
 
         public void search()
         {
-            // ambil data siswa dari search
-            string keywords = textBox1.Text;
-            string cari_data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + keywords + "' OR nis = '" + keywords + "' OR nama LIKE '%" + keywords + "%' OR id_kelas = '" + keywords + "' OR alamat LIKE '%" + keywords + "' OR no_telp = '" + keywords + "' OR id_spp = '" + keywords + "'";
-            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, Program.Conn.Connection);
-            MySqlDataAdapter adapter_cari_siswa = new MySqlDataAdapter(cmd_cari_siswa);
-            DataTable dt_cari_siswa = new DataTable();
-            adapter_cari_siswa.Fill(dt_cari_siswa);
-
             // tampilkan daftar siswa
-            dataGridView1.DataSource = dt_cari_siswa; ;
+            dataGridView1.DataSource = sqlquery.searchSiswa(textBox1.Text);
         }
 
         // fungsi menampilkan data siswa

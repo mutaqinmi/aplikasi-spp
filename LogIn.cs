@@ -16,6 +16,7 @@ namespace SPP
     public partial class LogIn : Form
     {
         private Form1 mainform = null;
+        public SQLQuery sql_query = new SQLQuery();
 
         public LogIn(Form1 main)
         {
@@ -39,17 +40,10 @@ namespace SPP
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // mengambil data petugas di database
-            string strQuery = "SELECT * FROM data_user WHERE USERNAME = '" + textBox1.Text + "' AND PASSWORD = '" + textBox2.Text + "'";
-            MySqlCommand cmd = new MySqlCommand(strQuery, Program.Conn.Connection);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-
             // mengecek data apakah tersedia
-            if (dt.Rows.Count == 1)
+            if (sql_query.logIn(textBox1.Text).Rows.Count == 1)
             {
-                if (textBox1.Text == dt.Rows[0]["username"].ToString() && textBox2.Text == dt.Rows[0]["password"].ToString())
+                if (textBox1.Text == sql_query.logIn(textBox1.Text).Rows[0]["username"].ToString() && textBox2.Text == sql_query.logIn(textBox1.Text).Rows[0]["password"].ToString())
                 {
                     mainform.logged_in(textBox1.Text);
                     this.Close();

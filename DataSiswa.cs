@@ -13,6 +13,8 @@ namespace SPP
 {
     public partial class DataSiswa : Form
     {
+        public SQLQuery sqlquery = new SQLQuery();
+
         public DataSiswa()
         {
             InitializeComponent();
@@ -20,29 +22,14 @@ namespace SPP
 
         private void refreshData()
         {
-            // ambil data siswa
-            string data_siswa = "SELECT * FROM data_siswa";
-            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, Program.Conn.Connection);
-            MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
-            DataTable dt_siswa = new DataTable();
-            adapter_siswa.Fill(dt_siswa);
-
             // tampilkan daftar siswa
-            dataGridView1.DataSource = dt_siswa;
+            dataGridView1.DataSource = sqlquery.selectAll("data_siswa");
         }
 
         private void search()
         {
-            // ambil data siswa dari search
-            string keywords = textBox1.Text;
-            string cari_data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + keywords + "' OR nis = '" + keywords + "' OR nama LIKE '%" + keywords + "%' OR id_kelas = '" + keywords + "' OR alamat LIKE '%" + keywords + "' OR no_telp = '" + keywords + "' OR id_spp = '" + keywords + "'";
-            MySqlCommand cmd_cari_siswa = new MySqlCommand(cari_data_siswa, Program.Conn.Connection);
-            MySqlDataAdapter adapter_cari_siswa = new MySqlDataAdapter(cmd_cari_siswa);
-            DataTable dt_cari_siswa = new DataTable();
-            adapter_cari_siswa.Fill(dt_cari_siswa);
-
             // tampilkan daftar siswa
-            dataGridView1.DataSource = dt_cari_siswa;
+            dataGridView1.DataSource = sqlquery.searchSiswa(textBox1.Text);
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,25 +54,22 @@ namespace SPP
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // ambil data siswa yang di klik
-            string data_siswa = "SELECT * FROM data_siswa WHERE nisn = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR nis = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR nama LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "%'";
-            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, Program.Conn.Connection);
-            MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
-            DataTable dt_siswa = new DataTable();
-            adapter_siswa.Fill(dt_siswa);
+            foreach(DataRow row in sqlquery.selectAll("data_siswa").Rows){
+                if (row["nisn"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["nis"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["nama"].ToString() == dataGridView1.SelectedCells[0].Value.ToString())
+                {
+                    string data_nisn = row["nisn"].ToString();
+                    string data_nis = row["nis"].ToString();
+                    string data_nama = row["nama"].ToString();
+                    string data_id_kelas = row["id_kelas"].ToString();
+                    string data_alamat = row["alamat"].ToString();
+                    string data_no_telp = row["no_telp"].ToString();
+                    string data_id_spp = row["id_spp"].ToString();
 
-            // memasukkan data
-            string nisn = dt_siswa.Rows[0]["nisn"].ToString();
-            string nis = dt_siswa.Rows[0]["nis"].ToString();
-            string nama = dt_siswa.Rows[0]["nama"].ToString();
-            string id_kelas = dt_siswa.Rows[0]["id_kelas"].ToString();
-            string alamat = dt_siswa.Rows[0]["alamat"].ToString();
-            string no_telp = dt_siswa.Rows[0]["no_telp"].ToString();
-            string id_spp = dt_siswa.Rows[0]["id_spp"].ToString();
-
-            // mengirim data ke window detail siswa
-            var detail_siswa = new DetailSiswa(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp);
-            detail_siswa.ShowDialog();
+                    // mengirim data ke window detail siswa
+                    var detail_siswa = new DetailSiswa(data_nisn, data_nis, data_nama, data_id_kelas, data_alamat, data_no_telp, data_id_spp);
+                    detail_siswa.ShowDialog();
+                }
+            }
         }
     }
 }

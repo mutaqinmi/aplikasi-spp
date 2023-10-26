@@ -28,10 +28,8 @@ namespace SPP
             var jenis_petugas = comboBox1.Text;
 
             // tambah data petugas
-            string insert_petugas = "INSERT INTO data_user(username, password, nama_petugas, jenis_petugas) VALUES ('" + username + "', '" + password + "', '" + nama + "', '" + jenis_petugas + "')";
-            MySqlCommand cmd_insert_petugas = new MySqlCommand(insert_petugas, Program.Conn.Connection);
-            cmd_insert_petugas.ExecuteNonQuery();
-            MessageBox.Show("Data berhasil ditambahkan!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SQLQuery insert = new SQLQuery();
+            insert.insertPetugas(username, password, nama, jenis_petugas);
             this.Close();
         }
     }

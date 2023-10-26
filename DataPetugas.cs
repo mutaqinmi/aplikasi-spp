@@ -13,6 +13,8 @@ namespace SPP
 {
     public partial class DataPetugas : Form
     {
+        public SQLQuery sqlquery = new SQLQuery();
+
         public DataPetugas()
         {
             InitializeComponent();
@@ -20,29 +22,14 @@ namespace SPP
 
         public void refreshData()
         {
-            // ambil data petugas
-            string data_petugas = "SELECT * FROM data_user";
-            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, Program.Conn.Connection);
-            MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
-            DataTable dt_petugas = new DataTable();
-            adapter_petugas.Fill(dt_petugas);
-
             // tampilkan daftar petugas
-            dataGridView1.DataSource = dt_petugas;
+            dataGridView1.DataSource = sqlquery.selectAll("data_user");
         }
 
         public void search()
         {
-            // ambil data petugas dari search
-            string keywords = textBox1.Text;
-            string cari_data_petugas = "SELECT * FROM data_user WHERE id_petugas = '" + keywords + "' OR username LIKE '%" + keywords + "%' OR password = '" + keywords + "' OR nama_petugas LIKE '%" + keywords + "%' OR jenis_petugas = '" + keywords + "'";
-            MySqlCommand cmd_cari_petugas = new MySqlCommand(cari_data_petugas, Program.Conn.Connection);
-            MySqlDataAdapter adapter_cari_petugas = new MySqlDataAdapter(cmd_cari_petugas);
-            DataTable dt_cari_petugas = new DataTable();
-            adapter_cari_petugas.Fill(dt_cari_petugas);
-
             // tampilkan daftar siswa
-            dataGridView1.DataSource = dt_cari_petugas;
+            dataGridView1.DataSource = sqlquery.searchPetugas(textBox1.Text);
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,22 +54,21 @@ namespace SPP
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // ambil data petugas yang di select
-            string data_petugas = "SELECT * FROM data_user WHERE id_petugas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR username = '" + dataGridView1.SelectedCells[0].Value.ToString() + "' OR password LIKE '%" + dataGridView1.SelectedCells[0].Value.ToString() + "%' OR nama_petugas = '" + dataGridView1.SelectedCells[0].Value.ToString() + "'";
-            MySqlCommand cmd_petugas = new MySqlCommand(data_petugas, Program.Conn.Connection);
-            MySqlDataAdapter adapter_petugas = new MySqlDataAdapter(cmd_petugas);
-            DataTable dt_petugas = new DataTable();
-            adapter_petugas.Fill(dt_petugas);
+            foreach (DataRow row in sqlquery.selectAll("data_user").Rows)
+            {
+                if (row["id_petugas"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["username"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["nama_petugas"].ToString() == dataGridView1.SelectedCells[0].Value.ToString())
+                {
+                    string data_id_petugas = row["id_petugas"].ToString();
+                    string data_username = row["username"].ToString();
+                    string data_password = row["password"].ToString();
+                    string data_nama_petugas = row["nama_petugas"].ToString();
+                    string data_jenis_petugas = row["jenis_petugas"].ToString();
 
-            // memasukkan data
-            string id_petugas = dt_petugas.Rows[0]["id_petugas"].ToString();
-            string username = dt_petugas.Rows[0]["username"].ToString();
-            string password = dt_petugas.Rows[0]["password"].ToString();
-            string nama_petugas = dt_petugas.Rows[0]["nama_petugas"].ToString();
-            string jenis_petugas = dt_petugas.Rows[0]["jenis_petugas"].ToString();
-
-            var detail_petugas = new DetailPetugas(id_petugas, username, password, nama_petugas, jenis_petugas);
-            detail_petugas.ShowDialog();
+                    // mengirim data ke window detail petugas
+                    var detail_petugas = new DetailPetugas(data_id_petugas, data_username, data_password, data_nama_petugas, data_jenis_petugas);
+                    detail_petugas.ShowDialog();
+                }
+            }
         }
     }
 }

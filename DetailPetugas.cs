@@ -13,6 +13,7 @@ namespace SPP
 {
     public partial class DetailPetugas : Form
     {
+        public SQLQuery sqlquery = new SQLQuery();
         public DetailPetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas)
         {
             InitializeComponent();
@@ -29,14 +30,7 @@ namespace SPP
         private void button1_Click(object sender, EventArgs e)
         {
             // hapus petugas
-            string hapus_petugas = "DELETE FROM data_user WHERE id_petugas = '" + label4.Text + "'";
-            MySqlCommand cmd_hapus_petugas = new MySqlCommand(hapus_petugas, Program.Conn.Connection);
-            var confirm = MessageBox.Show("Apakah anda yakin menghapus data petugas " + label10.Text + "?", "Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirm == DialogResult.Yes)
-            {
-                cmd_hapus_petugas.ExecuteNonQuery();
-                MessageBox.Show("Data berhasil dihapus!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            sqlquery.deleteData("data_user", "id_petugas", label4.Text);
             this.Close();
         }
 

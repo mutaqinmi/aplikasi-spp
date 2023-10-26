@@ -15,6 +15,8 @@ namespace SPP
     public partial class UpdatePetugas : Form
     {
         public DetailPetugas mainform = null;
+        public SQLQuery sqlquery = new SQLQuery();
+
         public UpdatePetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas, DetailPetugas main)
         {
             InitializeComponent();
@@ -50,14 +52,7 @@ namespace SPP
             var jenis_petugas = comboBox1.SelectedIndex + 1;
 
             // update petugas
-            string update_petugas = "UPDATE data_user SET id_petugas = '" + id_petugas + "', username = '" + username + "', password = '" + password + "', nama_petugas = '" + nama_petugas + "', jenis_petugas = '" + jenis_petugas + "' WHERE id_petugas = '" + id_petugas + "'";
-            MySqlCommand cmd_update_petugas = new MySqlCommand(update_petugas, Program.Conn.Connection);
-            var confirm = MessageBox.Show("Apakah anda yakin mengedit data petugas " + textBox3.Text + "?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirm == DialogResult.Yes)
-            {
-                cmd_update_petugas.ExecuteNonQuery();
-                MessageBox.Show("Data berhasil diupdate!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            sqlquery.updatePetugas(id_petugas, username, password, nama_petugas, jenis_petugas);
             this.Close();
         }
     }
