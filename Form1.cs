@@ -39,12 +39,8 @@ namespace SPP
             label7.Text = dt_petugas.Rows.Count.ToString();
 
             // ambil data siswa
-            string data_siswa = "SELECT * FROM data_siswa";
-            MySqlCommand cmd_siswa = new MySqlCommand(data_siswa, Program.Conn.Connection);
-            MySqlDataAdapter adapter_siswa = new MySqlDataAdapter(cmd_siswa);
-            DataTable dt_siswa = new DataTable();
-            adapter_siswa.Fill(dt_siswa);
-            label6.Text = dt_siswa.Rows.Count.ToString();
+            SQLQuery select_siswa = new SQLQuery();
+            label6.Text = select_siswa.selectAll("data_siswa").Rows.Count.ToString();
 
             // ambil data transaksi
             string data_transaksi = "SELECT * FROM data_pembayaran";
@@ -55,7 +51,7 @@ namespace SPP
             label8.Text = dt_transaksi.Rows.Count.ToString();
 
             // tampilkan daftar siswa
-            dataGridView1.DataSource = dt_siswa;
+            dataGridView1.DataSource = select_siswa.selectAll("data_siswa");
         }
 
         public void search()
