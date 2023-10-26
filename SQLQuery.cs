@@ -35,6 +35,37 @@ namespace SPP
             return dt;
         }
 
+        // EXPERIMENTAL!!!
+        /*public void refreshDataSiswa()
+        {
+            // ambil data petugas
+            label7.Text = selectAll("data_user").Rows.Count.ToString();
+
+            // ambil data siswa
+            label6.Text = selectAll("data_siswa").Rows.Count.ToString();
+
+            // ambil data transaksi
+            label8.Text = selectAll("data_pembayaran").Rows.Count.ToString();
+
+            // tampilkan daftar siswa
+            dataGridView1.DataSource = selectAll("data_siswa");
+        }
+
+        public void refreshDataPetugas()
+        {
+            // ambil data petugas
+            label7.Text = sqlquery.selectAll("data_user").Rows.Count.ToString();
+
+            // ambil data siswa
+            label6.Text = sqlquery.selectAll("data_siswa").Rows.Count.ToString();
+
+            // ambil data transaksi
+            label8.Text = sqlquery.selectAll("data_pembayaran").Rows.Count.ToString();
+
+            // tampilkan daftar siswa
+            Form1.dataGridView1.DataSource = sqlquery.selectAll("data_siswa");
+        }*/
+
         public DataTable searchSiswa(string data)
         {
             string keywords = data;
@@ -66,6 +97,8 @@ namespace SPP
             command.ExecuteNonQuery();
 
             MessageBox.Show("Data berhasil ditambahkan!\nSilahkan untuk refresh halaman melalui tombol 'Refresh' pada kanan menu", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
 
         public void insertPetugas(string username, string password, string nama, string jenis_petugas)
