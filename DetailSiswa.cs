@@ -14,10 +14,23 @@ namespace SPP
     public partial class DetailSiswa : Form
     {
         public SQLQuery sqlquery = new SQLQuery();
+        public Form1 mainform = null;
+        public DataSiswa dataform = null;
 
-        public DetailSiswa(string nisn, string nis, string nama, string id_kelas, string alamat, string no_telp, string id_spp)
+        public Label get_data_nisn() { return label4; }
+        public Label get_data_nis() { return label5; }
+        public Label get_data_nama() { return label6; }
+        public Label get_data_idkelas() { return label15; }
+        public Label get_data_kelas() { return label8; }
+        public Label get_data_alamat() { return label10; }
+        public Label get_data_telp() { return label12; }
+        public Label get_data_spp() { return label14; }
+
+        public DetailSiswa(string nisn, string nis, string nama, string id_kelas, string alamat, string no_telp, string id_spp, Form1 main, DataSiswa data)
         {
             InitializeComponent();
+            this.mainform = main;
+            this.dataform = data;
 
             // mengisi value textbox
             label15.Text = id_kelas;
@@ -45,7 +58,7 @@ namespace SPP
         private void button1_Click(object sender, EventArgs e)
         {
             // hapus siswa
-            sqlquery.deleteData("data_siswa", "nisn", label4.Text);
+            sqlquery.deleteData("data_siswa", "nisn", label4.Text, mainform, dataform);
             this.Close();
         }
 
@@ -62,7 +75,7 @@ namespace SPP
             string id_spp = label14.Text;
 
             // tampilkan window
-            Update update_data = new Update(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp, this);
+            Update update_data = new Update(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp, this, mainform, dataform);
             this.Hide();
             update_data.ShowDialog();
             update_data.Focus();

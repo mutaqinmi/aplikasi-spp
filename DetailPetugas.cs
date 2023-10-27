@@ -30,7 +30,7 @@ namespace SPP
         private void button1_Click(object sender, EventArgs e)
         {
             // hapus petugas
-            sqlquery.deleteData("data_user", "id_petugas", label4.Text);
+            sqlquery.deleteData("data_user", "id_petugas", label4.Text, null, null);
             this.Close();
         }
 

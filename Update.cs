@@ -13,10 +13,11 @@ namespace SPP
 {
     public partial class Update : Form
     {
-        private DetailSiswa mainform = null;
+        public Form1 mainform = null;
+        public DataSiswa dataform = null;
+        private DetailSiswa detailform = null;
         public SQLQuery sqlquery = new SQLQuery();
-
-        public Update(string nisn, string nis, string nama, string kelas, string alamat, string no_telp, string id_spp, DetailSiswa main)
+        public Update(string nisn, string nis, string nama, string kelas, string alamat, string no_telp, string id_spp, DetailSiswa main_siswa_detail, Form1 main, DataSiswa main_siswa)
         {
             InitializeComponent();
 
@@ -29,7 +30,9 @@ namespace SPP
             textBox6.Text = id_spp;
 
             // menjadikan window utama
+            this.detailform = main_siswa_detail;
             this.mainform = main;
+            this.dataform = main_siswa;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,7 +47,7 @@ namespace SPP
             var id_spp = textBox6.Text;
 
             // update siswa
-            sqlquery.updateSiswa(nisn, nis, nama, kelas, alamat, telepon, id_spp);
+            sqlquery.updateSiswa(nisn, nis, nama, kelas, alamat, telepon, id_spp, detailform, mainform, dataform);
             this.Close();
         }
     }

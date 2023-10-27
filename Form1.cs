@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +29,11 @@ namespace SPP
             login.ShowDialog();
             login.Focus();
         }
+
+        public Label get_dataSiswa() { return label6; }
+        public Label get_dataPetugas() { return label7; }
+        public Label get_dataTransaksi() { return label8; }
+        public DataGridView get_dataGrid() { return dataGridView1; }
 
         // fungsi untuk merefresh data
         public void refreshData ()
@@ -54,7 +60,7 @@ namespace SPP
         // fungsi menampilkan data siswa
         public void showSiswa()
         {
-            var lihat_siswa = new DataSiswa();
+            var lihat_siswa = new DataSiswa(this);
             lihat_siswa.ShowDialog();
         }
 
@@ -105,7 +111,7 @@ namespace SPP
         // tampilkan window tambahkan siswa
         private void tambahkanSiswaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var tambah_siswa = new TambahSiswa();
+            var tambah_siswa = new TambahSiswa(this);
             tambah_siswa.ShowDialog();
             tambah_siswa.Focus();
         }

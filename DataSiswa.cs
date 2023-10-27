@@ -14,10 +14,13 @@ namespace SPP
     public partial class DataSiswa : Form
     {
         public SQLQuery sqlquery = new SQLQuery();
+        public DataGridView get_dataGrid() { return dataGridView1; }
+        public Form1 mainform = null;
 
-        public DataSiswa()
+        public DataSiswa(Form1 main)
         {
             InitializeComponent();
+            this.mainform = main;
         }
 
         private void refreshData()
@@ -66,7 +69,7 @@ namespace SPP
                     string data_id_spp = row["id_spp"].ToString();
 
                     // mengirim data ke window detail siswa
-                    var detail_siswa = new DetailSiswa(data_nisn, data_nis, data_nama, data_id_kelas, data_alamat, data_no_telp, data_id_spp);
+                    var detail_siswa = new DetailSiswa(data_nisn, data_nis, data_nama, data_id_kelas, data_alamat, data_no_telp, data_id_spp, mainform, this);
                     detail_siswa.ShowDialog();
                 }
             }
