@@ -67,7 +67,7 @@ namespace SPP
         // fungsi menampilkan data petugas
         public void showPetugas()
         {
-            var lihat_petugas = new DataPetugas();
+            var lihat_petugas = new DataPetugas(this);
             lihat_petugas.ShowDialog();
         }
 
@@ -82,11 +82,6 @@ namespace SPP
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            refreshData();
-        }
-
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             refreshData();
         }
@@ -119,7 +114,7 @@ namespace SPP
         // tampilkan window tambahkan petugas
         private void tambahkanPetugasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var tambah_petugas = new TambahPetugas();
+            var tambah_petugas = new TambahPetugas(this);
             tambah_petugas.ShowDialog();
             tambah_petugas.Focus();
         }

@@ -14,9 +14,12 @@ namespace SPP
 {
     public partial class TambahPetugas : Form
     {
-        public TambahPetugas()
+        public Form1 mainform = null;
+        public TambahPetugas(Form1 main)
         {
             InitializeComponent();
+
+            this.mainform = main;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,7 +32,7 @@ namespace SPP
 
             // tambah data petugas
             SQLQuery insert = new SQLQuery();
-            insert.insertPetugas(username, password, nama, jenis_petugas);
+            insert.insertPetugas(username, password, nama, jenis_petugas, mainform);
             this.Close();
         }
     }

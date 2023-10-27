@@ -14,11 +14,14 @@ namespace SPP
     public partial class DataPetugas : Form
     {
         public SQLQuery sqlquery = new SQLQuery();
+        public Form1 mainform = null;
 
-        public DataPetugas()
+        public DataPetugas(Form1 main)
         {
             InitializeComponent();
+            this.mainform = main;
         }
+        public DataGridView get_dataGrid() { return dataGridView1; }
 
         public void refreshData()
         {
@@ -30,11 +33,6 @@ namespace SPP
         {
             // tampilkan daftar siswa
             dataGridView1.DataSource = sqlquery.searchPetugas(textBox1.Text);
-        }
-
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            refreshData();
         }
 
         private void DataPetugas_Load(object sender, EventArgs e)
@@ -65,7 +63,7 @@ namespace SPP
                     string data_jenis_petugas = row["jenis_petugas"].ToString();
 
                     // mengirim data ke window detail petugas
-                    var detail_petugas = new DetailPetugas(data_id_petugas, data_username, data_password, data_nama_petugas, data_jenis_petugas);
+                    var detail_petugas = new DetailPetugas(data_id_petugas, data_username, data_password, data_nama_petugas, data_jenis_petugas, mainform, this);
                     detail_petugas.ShowDialog();
                 }
             }

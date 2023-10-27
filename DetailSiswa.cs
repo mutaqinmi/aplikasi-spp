@@ -58,7 +58,7 @@ namespace SPP
         private void button1_Click(object sender, EventArgs e)
         {
             // hapus siswa
-            sqlquery.deleteData("data_siswa", "nisn", label4.Text, mainform, dataform);
+            sqlquery.deleteData("data_siswa", "nisn", label4.Text, mainform, dataform, null);
             this.Close();
         }
 

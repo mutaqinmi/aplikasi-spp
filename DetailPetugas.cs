@@ -14,9 +14,20 @@ namespace SPP
     public partial class DetailPetugas : Form
     {
         public SQLQuery sqlquery = new SQLQuery();
-        public DetailPetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas)
+        public Form1 mainform = null;
+        public DataPetugas dataform = null;
+
+        public Label get_data_id() { return label4; }
+        public Label get_data_username() { return label6; }
+        public Label get_data_password() { return label8; }
+        public Label get_data_nama() { return label10; }
+        public Label get_data_jenis() { return label12; }
+
+        public DetailPetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas, Form1 main, DataPetugas main_petugas)
         {
             InitializeComponent();
+            this.mainform = main;
+            this.dataform = main_petugas;
 
             // mengambil data dari cell
             label4.Text = id_petugas;
@@ -30,7 +41,7 @@ namespace SPP
         private void button1_Click(object sender, EventArgs e)
         {
             // hapus petugas
-            sqlquery.deleteData("data_user", "id_petugas", label4.Text, null, null);
+            sqlquery.deleteData("data_user", "id_petugas", label4.Text, mainform, null, dataform);
             this.Close();
         }
 
@@ -45,7 +56,7 @@ namespace SPP
             string jenis_petugas = label12.Text;
 
             // tampilkan window update
-            UpdatePetugas update_data = new UpdatePetugas(id_petugas, username, password, nama_petugas, jenis_petugas, this);
+            UpdatePetugas update_data = new UpdatePetugas(id_petugas, username, password, nama_petugas, jenis_petugas, this, mainform, dataform);
             this.Hide();
             update_data.ShowDialog();
             update_data.Focus();

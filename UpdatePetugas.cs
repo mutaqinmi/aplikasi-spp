@@ -14,10 +14,12 @@ namespace SPP
 {
     public partial class UpdatePetugas : Form
     {
-        public DetailPetugas mainform = null;
+        public Form1 mainform = null;
+        public DataPetugas dataform = null;
+        private DetailPetugas detailform = null;
         public SQLQuery sqlquery = new SQLQuery();
 
-        public UpdatePetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas, DetailPetugas main)
+        public UpdatePetugas(string id_petugas, string username, string password, string nama_petugas, string jenis_petugas, DetailPetugas main_petugas_detail, Form1 main, DataPetugas main_petugas)
         {
             InitializeComponent();
 
@@ -39,7 +41,9 @@ namespace SPP
             comboBox1.SelectedIndex = int.Parse(jenis);
 
             // jadikan window sebagai utama
+            this.detailform = main_petugas_detail;
             this.mainform = main;
+            this.dataform = main_petugas;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace SPP
             var jenis_petugas = comboBox1.SelectedIndex + 1;
 
             // update petugas
-            sqlquery.updatePetugas(id_petugas, username, password, nama_petugas, jenis_petugas);
+            sqlquery.updatePetugas(id_petugas, username, password, nama_petugas, jenis_petugas, detailform, mainform, dataform);
             this.Close();
         }
     }

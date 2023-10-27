@@ -35,11 +35,6 @@ namespace SPP
             dataGridView1.DataSource = sqlquery.searchSiswa(textBox1.Text);
         }
 
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            refreshData();
-        }
-
         private void DataSiswa_Load(object sender, EventArgs e)
         {
             refreshData();
