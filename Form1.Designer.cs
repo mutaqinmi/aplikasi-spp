@@ -34,7 +34,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.kelolaTransaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lihatSemuaTransaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buatLaporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kelolaUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siswaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lihatSemuaSiswaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +59,20 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.NISN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaSiswa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alamat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoTelepon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDPetugas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Waktu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,6 +80,8 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,7 +90,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.ForeColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(12, 52);
+            this.panel1.Location = new System.Drawing.Point(12, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 0;
@@ -102,6 +117,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kelolaTransaksiToolStripMenuItem,
             this.kelolaUserToolStripMenuItem,
@@ -115,8 +131,7 @@
             // kelolaTransaksiToolStripMenuItem
             // 
             this.kelolaTransaksiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lihatSemuaTransaksiToolStripMenuItem,
-            this.buatLaporanToolStripMenuItem});
+            this.lihatSemuaTransaksiToolStripMenuItem});
             this.kelolaTransaksiToolStripMenuItem.Name = "kelolaTransaksiToolStripMenuItem";
             this.kelolaTransaksiToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
             this.kelolaTransaksiToolStripMenuItem.Text = "Kelola Transaksi";
@@ -126,12 +141,6 @@
             this.lihatSemuaTransaksiToolStripMenuItem.Name = "lihatSemuaTransaksiToolStripMenuItem";
             this.lihatSemuaTransaksiToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.lihatSemuaTransaksiToolStripMenuItem.Text = "Lihat Semua Transaksi";
-            // 
-            // buatLaporanToolStripMenuItem
-            // 
-            this.buatLaporanToolStripMenuItem.Name = "buatLaporanToolStripMenuItem";
-            this.buatLaporanToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.buatLaporanToolStripMenuItem.Text = "Buat Laporan";
             // 
             // kelolaUserToolStripMenuItem
             // 
@@ -222,7 +231,7 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label2);
             this.panel2.ForeColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(218, 52);
+            this.panel2.Location = new System.Drawing.Point(218, 27);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 100);
             this.panel2.TabIndex = 1;
@@ -253,7 +262,7 @@
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label3);
             this.panel3.ForeColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(424, 52);
+            this.panel3.Location = new System.Drawing.Point(424, 27);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 100);
             this.panel3.TabIndex = 2;
@@ -281,9 +290,9 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.dataGridView1);
-            this.panel4.Location = new System.Drawing.Point(12, 212);
+            this.panel4.Location = new System.Drawing.Point(12, 182);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1024, 382);
+            this.panel4.Size = new System.Drawing.Size(612, 388);
             this.panel4.TabIndex = 1;
             // 
             // dataGridView1
@@ -292,10 +301,18 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NISN,
+            this.NIS,
+            this.NamaSiswa,
+            this.IDKelas,
+            this.Alamat,
+            this.NoTelepon,
+            this.IDSPP});
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1024, 382);
+            this.dataGridView1.Size = new System.Drawing.Size(612, 388);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel5
@@ -304,9 +321,9 @@
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label4);
             this.panel5.ForeColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(836, 52);
+            this.panel5.Location = new System.Drawing.Point(641, 27);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 100);
+            this.panel5.Size = new System.Drawing.Size(395, 100);
             this.panel5.TabIndex = 3;
             // 
             // label5
@@ -333,7 +350,7 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(987, 180);
+            this.button2.Location = new System.Drawing.Point(575, 141);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(49, 26);
             this.button2.TabIndex = 5;
@@ -343,27 +360,163 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 180);
+            this.textBox1.Location = new System.Drawing.Point(218, 141);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(873, 26);
+            this.textBox1.Size = new System.Drawing.Size(351, 26);
             this.textBox1.TabIndex = 6;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 183);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(12, 144);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 20);
-            this.label9.TabIndex = 7;
+            this.label9.Size = new System.Drawing.Size(100, 20);
+            this.label9.TabIndex = 2;
             this.label9.Text = "Data Siswa";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.dataGridView2);
+            this.panel6.Location = new System.Drawing.Point(641, 182);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(395, 388);
+            this.panel6.TabIndex = 2;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDLog,
+            this.IDPetugas,
+            this.Activity,
+            this.Waktu});
+            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(395, 388);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(637, 147);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(96, 20);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Log Masuk";
+            // 
+            // NISN
+            // 
+            this.NISN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NISN.DataPropertyName = "nisn";
+            this.NISN.HeaderText = "NISN";
+            this.NISN.Name = "NISN";
+            this.NISN.ReadOnly = true;
+            this.NISN.Width = 72;
+            // 
+            // NIS
+            // 
+            this.NIS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NIS.DataPropertyName = "nis";
+            this.NIS.HeaderText = "NIS";
+            this.NIS.Name = "NIS";
+            this.NIS.ReadOnly = true;
+            this.NIS.Width = 61;
+            // 
+            // NamaSiswa
+            // 
+            this.NamaSiswa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NamaSiswa.DataPropertyName = "nama";
+            this.NamaSiswa.HeaderText = "Nama Siswa";
+            this.NamaSiswa.Name = "NamaSiswa";
+            this.NamaSiswa.ReadOnly = true;
+            this.NamaSiswa.Width = 122;
+            // 
+            // IDKelas
+            // 
+            this.IDKelas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDKelas.DataPropertyName = "id_kelas";
+            this.IDKelas.HeaderText = "ID Kelas";
+            this.IDKelas.Name = "IDKelas";
+            this.IDKelas.ReadOnly = true;
+            this.IDKelas.Width = 94;
+            // 
+            // Alamat
+            // 
+            this.Alamat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Alamat.DataPropertyName = "alamat";
+            this.Alamat.HeaderText = "Alamat";
+            this.Alamat.Name = "Alamat";
+            this.Alamat.ReadOnly = true;
+            this.Alamat.Width = 84;
+            // 
+            // NoTelepon
+            // 
+            this.NoTelepon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NoTelepon.DataPropertyName = "no_telp";
+            this.NoTelepon.HeaderText = "No Telepon";
+            this.NoTelepon.Name = "NoTelepon";
+            this.NoTelepon.ReadOnly = true;
+            this.NoTelepon.Width = 115;
+            // 
+            // IDSPP
+            // 
+            this.IDSPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDSPP.DataPropertyName = "id_spp";
+            this.IDSPP.HeaderText = "ID SPP";
+            this.IDSPP.Name = "IDSPP";
+            this.IDSPP.ReadOnly = true;
+            this.IDSPP.Width = 86;
+            // 
+            // IDLog
+            // 
+            this.IDLog.DataPropertyName = "id_log";
+            this.IDLog.HeaderText = "ID Log";
+            this.IDLog.Name = "IDLog";
+            this.IDLog.ReadOnly = true;
+            this.IDLog.Visible = false;
+            // 
+            // IDPetugas
+            // 
+            this.IDPetugas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPetugas.DataPropertyName = "id_user";
+            this.IDPetugas.HeaderText = "ID Petugas";
+            this.IDPetugas.Name = "IDPetugas";
+            this.IDPetugas.ReadOnly = true;
+            this.IDPetugas.Width = 114;
+            // 
+            // Activity
+            // 
+            this.Activity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Activity.DataPropertyName = "activity";
+            this.Activity.HeaderText = "Aktivitas";
+            this.Activity.Name = "Activity";
+            this.Activity.ReadOnly = true;
+            this.Activity.Width = 93;
+            // 
+            // Waktu
+            // 
+            this.Waktu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Waktu.DataPropertyName = "waktu";
+            this.Waktu.HeaderText = "Waktu";
+            this.Waktu.Name = "Waktu";
+            this.Waktu.ReadOnly = true;
+            this.Waktu.Width = 80;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1048, 606);
+            this.ClientSize = new System.Drawing.Size(1048, 582);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
@@ -381,6 +534,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SPP";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -394,6 +548,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,7 +561,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem kelolaTransaksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lihatSemuaTransaksiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem buatLaporanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kelolaUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem siswaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lihatSemuaSiswaToolStripMenuItem;
@@ -433,6 +588,20 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NISN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NIS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaSiswa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDKelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alamat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoTelepon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDSPP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDPetugas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Waktu;
     }
 }
 

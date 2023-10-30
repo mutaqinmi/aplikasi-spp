@@ -94,3 +94,4 @@ C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DataSiswa.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DataPetugas.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DetailPetugas.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.UpdatePetugas.resources
+C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DataTransaksi.resources

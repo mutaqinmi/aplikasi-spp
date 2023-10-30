@@ -19,6 +19,14 @@ namespace SPP
         public DataPetugas mainform_petugas = null;
         public DetailSiswa mainform_detail_siswa = null;
         public DetailPetugas mainform_detail_petugas = null;
+
+        public void log(string id_user, string activity)
+        {
+            string query = $"INSERT INTO data_log VALUES (NULL, '{id_user}', '{activity}', NOW())";
+            MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
+            command.ExecuteNonQuery();
+        }
+
         public DataTable logIn(string username)
         {
             string query = $"SELECT * FROM data_user WHERE username = '{username}'";
@@ -39,6 +47,9 @@ namespace SPP
             } else if (table_name == "data_user")
             {
                 orderby = $" ORDER BY nama_petugas";
+            } else if (table_name == "data_log")
+            {
+                orderby = $" ORDER BY waktu DESC LIMIT 20";
             }
             string query = $"SELECT * FROM {table_name}" + orderby;
             MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
@@ -66,7 +77,8 @@ namespace SPP
             mainform.get_dataTransaksi().Text = selectAll("data_pembayaran").Rows.Count.ToString();
 
             // tampilkan daftar siswa
-            mainform.get_dataGrid().DataSource = selectAll("data_siswa");
+            mainform.get_dataGridSiswa().DataSource = selectAll("data_siswa");
+            mainform.get_dataGridLog().DataSource = selectAll("data_log");
             if(mainform_siswa != null)
             {
                 mainform_siswa.get_dataGrid().DataSource = selectAll("data_siswa");
@@ -140,19 +152,27 @@ namespace SPP
             string query = "";
             if(table_name == "data_siswa")
             {
-                query = $"INSERT INTO data_siswa(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp) VALUES ('{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '" + 1 + "')";
+                query = $"INSERT INTO data_siswa VALUES ('{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '" + 1 + "')";
             } else if (table_name == "data_user")
             {
-                query = $"INSERT INTO data_user(username, password, nama_petugas, jenis_petugas) VALUES ('{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}')";
+                query = $"INSERT INTO data_user VALUES (NULL, '{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}')";
             }
             MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
             command.ExecuteNonQuery();
+            if (table_name == "data_siswa")
+            {
+                log(mainform.id_user(), $"Insert {data[2]}");
+            }
+            else if (table_name == "data_user")
+            {
+                log(mainform.id_user(), $"Insert {data[2]}");
+            }
 
             MessageBox.Show("Data berhasil ditambahkan!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             refreshData(mainform, null, null);
         }
 
-        public void deleteData(string table_name, string id_variable, string id, Form1 main, DataSiswa main_siswa, DataPetugas main_petugas)
+        public void deleteData(string table_name, string id_variable, string id, string nama, Form1 main, DataSiswa main_siswa, DataPetugas main_petugas)
         {
             Form1 mainform = main;
             DataSiswa mainform_siswa = main_siswa;
@@ -164,6 +184,7 @@ namespace SPP
             if (confirm == DialogResult.Yes)
             {
                 command.ExecuteNonQuery();
+                log(mainform.id_user(), $"Hapus {nama}");
                 MessageBox.Show("Data berhasil dihapus!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             refreshData(mainform, mainform_siswa, mainform_petugas);
@@ -181,6 +202,7 @@ namespace SPP
             if (confirm == DialogResult.Yes)
             {
                 command.ExecuteNonQuery();
+                log(mainform.id_user(), $"Update {nama}");
                 MessageBox.Show("Data berhasil diupdate!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             refreshData(mainform, mainform_siswa, null);
@@ -199,6 +221,7 @@ namespace SPP
             if (confirm == DialogResult.Yes)
             {
                 command.ExecuteNonQuery();
+                log(mainform.id_user(), $"Update {nama_petugas}");
                 MessageBox.Show("Data berhasil diupdate!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             refreshData(mainform, null, mainform_petugas);

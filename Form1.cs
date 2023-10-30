@@ -16,24 +16,30 @@ namespace SPP
     public partial class Form1 : Form
     {
         public SQLQuery sqlquery = new SQLQuery();
+        public LogIn login = null;
+        public string id = "";
 
-        public Form1()
+        public Form1(LogIn main, string id_petugas)
         {
             InitializeComponent();
-
+            this.login = main;
+            id = id_petugas;
+/*
             // ketika Form 1 dijalankan, login form akan dijalankan terlebih dahulu
             LogIn login = new LogIn(this);
             
             // mainform disembunyikan untuk menampilkan login
             this.Hide();
             login.ShowDialog();
-            login.Focus();
+            login.Focus();*/
         }
 
         public Label get_dataSiswa() { return label6; }
         public Label get_dataPetugas() { return label7; }
         public Label get_dataTransaksi() { return label8; }
-        public DataGridView get_dataGrid() { return dataGridView1; }
+        public DataGridView get_dataGridSiswa() { return dataGridView1; }
+        public DataGridView get_dataGridLog() { return dataGridView2; }
+        public string id_user() { return id; }
 
         // fungsi untuk merefresh data
         public void refreshData ()
@@ -49,6 +55,7 @@ namespace SPP
 
             // tampilkan daftar siswa
             dataGridView1.DataSource = sqlquery.selectAll("data_siswa");
+            dataGridView2.DataSource = sqlquery.selectAll("data_log");
         }
 
         public void search()
@@ -71,13 +78,9 @@ namespace SPP
             lihat_petugas.ShowDialog();
         }
 
-        // fungsi dijalankan ketika berhasil login
         public void logged_in(string username)
         {
             MessageBox.Show("Login Berhasil!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // mainform ditampilkan setelah berhasil masuk
-            this.Visible = true;
             label5.Text = username;
         }
 
@@ -92,7 +95,12 @@ namespace SPP
             this.Close();
         }
 
-        // mencari data
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            login.Show();
+        }
+
+        // =============================================================================================================================================
         private void button2_Click(object sender, EventArgs e)
         {
             search();
@@ -103,7 +111,6 @@ namespace SPP
             search();
         }
 
-        // tampilkan window tambahkan siswa
         private void tambahkanSiswaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var tambah_siswa = new TambahSiswa(this);
@@ -111,7 +118,6 @@ namespace SPP
             tambah_siswa.Focus();
         }
 
-        // tampilkan window tambahkan petugas
         private void tambahkanPetugasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var tambah_petugas = new TambahPetugas(this);
@@ -119,7 +125,6 @@ namespace SPP
             tambah_petugas.Focus();
         }
 
-        // tampilkan daftar siswa
         private void lihatSemuaSiswaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showSiswa();
@@ -129,7 +134,6 @@ namespace SPP
             showSiswa();
         }
 
-        // tampilkan daftar petugas
         private void lihatSemuaPetugasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPetugas();
@@ -139,7 +143,6 @@ namespace SPP
             showPetugas();
         }
 
-        // tampilkan daftar transaksi
         private void panel3_Click(object sender, EventArgs e)
         {
 
