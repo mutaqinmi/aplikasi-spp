@@ -114,10 +114,17 @@ namespace SPP
             mainform_detail_petugas.get_data_jenis().Text = mainform_detail_petugas.get_data_jenis().Text;
         }
 
-        public DataTable searchSiswa(string data)
+        public DataTable search(string table_name, string data)
         {
             string keywords = data;
-            string query = $"SELECT * FROM data_siswa WHERE nisn LIKE '%{keywords}%' OR nis LIKE '%{keywords}%' OR nama LIKE '%{keywords}%' OR id_kelas LIKE '%{keywords}%' OR alamat LIKE '%{keywords}' OR no_telp LIKE '%{keywords}%'";
+            string query = "";
+            if(table_name == "data_siswa")
+            {
+                query = $"SELECT * FROM data_siswa WHERE nisn LIKE '%{keywords}%' OR nis LIKE '%{keywords}%' OR nama LIKE '%{keywords}%' OR id_kelas LIKE '%{keywords}%' OR alamat LIKE '%{keywords}' OR no_telp LIKE '%{keywords}%'";
+            } else if (table_name == "data_user")
+            {
+                query = $"SELECT * FROM data_user WHERE id_petugas LIKE '%{keywords}%' OR username LIKE '%{keywords}%' OR nama_petugas LIKE '%{keywords}%' OR jenis_petugas LIKE '%{keywords}%'";
+            }
             MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             DataTable dt = new DataTable();
@@ -126,33 +133,18 @@ namespace SPP
             return dt;
         }
 
-        public DataTable searchPetugas(string data)
-        {
-            string keywords = data;
-            string query = $"SELECT * FROM data_user WHERE id_petugas LIKE '%{keywords}%' OR username LIKE '%{keywords}%' OR nama_petugas LIKE '%{keywords}%' OR jenis_petugas LIKE '%{keywords}%'";
-            MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-
-            return dt;
-        }
-
-        public void insertSiswa(string nisn, string nis, string nama, int kelas, string alamat, string telepon, Form1 main)
+        public void insert(string table_name, object[] arr, Form1 main)
         {
             Form1 mainform = main;
-            string query = $"INSERT INTO data_siswa(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp) VALUES ('{nisn}', '{nis}', '{nama}', '{kelas}', '{alamat}', '{telepon}', '" + 1 + "')";
-            MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
-            command.ExecuteNonQuery();
-
-            MessageBox.Show("Data berhasil ditambahkan!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            refreshData(mainform, null, null);
-        }
-
-        public void insertPetugas(string username, string password, string nama, string jenis_petugas, Form1 main)
-        {
-            Form1 mainform = main;
-            string query = $"INSERT INTO data_user(username, password, nama_petugas, jenis_petugas) VALUES ('{username}', '{password}', '{nama}', '{jenis_petugas}')";
+            object[] data = arr;
+            string query = "";
+            if(table_name == "data_siswa")
+            {
+                query = $"INSERT INTO data_siswa(nisn, nis, nama, id_kelas, alamat, no_telp, id_spp) VALUES ('{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '" + 1 + "')";
+            } else if (table_name == "data_user")
+            {
+                query = $"INSERT INTO data_user(username, password, nama_petugas, jenis_petugas) VALUES ('{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}')";
+            }
             MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
             command.ExecuteNonQuery();
 

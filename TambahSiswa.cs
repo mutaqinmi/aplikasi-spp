@@ -23,17 +23,18 @@ namespace SPP
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // ambil data dari textbox
+            // ambil data dari textbox;
             var nisn = textBox1.Text;
             var nis = textBox2.Text;
             var nama = textBox3.Text;
             var kelas = comboBox1.SelectedIndex + 1;
             var alamat = textBox4.Text;
             var telepon = textBox5.Text;
-            // tambah data siswa
+            
+            object[] data = { nisn, nis, nama, kelas, alamat, telepon };
 
             SQLQuery insert = new SQLQuery();
-            insert.insertSiswa(nisn, nis, nama, kelas, alamat, telepon, mainform);
+            insert.insert("data_siswa", data, mainform);
             this.Close();
         }
     }

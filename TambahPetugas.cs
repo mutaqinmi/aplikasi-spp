@@ -30,9 +30,11 @@ namespace SPP
             var nama = textBox3.Text;
             var jenis_petugas = comboBox1.Text;
 
+            object[] data = { username, password, nama, jenis_petugas };
+
             // tambah data petugas
             SQLQuery insert = new SQLQuery();
-            insert.insertPetugas(username, password, nama, jenis_petugas, mainform);
+            insert.insert("data_user", data, mainform);
             this.Close();
         }
     }

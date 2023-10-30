@@ -54,7 +54,7 @@ namespace SPP
         public void search()
         {
             // tampilkan daftar siswa
-            dataGridView1.DataSource = sqlquery.searchSiswa(textBox1.Text);
+            dataGridView1.DataSource = sqlquery.search("data_siswa", textBox1.Text);
         }
 
         // fungsi menampilkan data siswa

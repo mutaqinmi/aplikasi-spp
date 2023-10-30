@@ -32,7 +32,7 @@ namespace SPP
         private void search()
         {
             // tampilkan daftar siswa
-            dataGridView1.DataSource = sqlquery.searchSiswa(textBox1.Text);
+            dataGridView1.DataSource = sqlquery.search("data_siswa", textBox1.Text);
         }
 
         private void DataSiswa_Load(object sender, EventArgs e)
