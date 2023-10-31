@@ -53,6 +53,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NISN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaSiswa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alamat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoTelepon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,18 +68,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.NISN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NamaSiswa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alamat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoTelepon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDPetugas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Waktu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -315,6 +315,69 @@
             this.dataGridView1.Size = new System.Drawing.Size(612, 388);
             this.dataGridView1.TabIndex = 0;
             // 
+            // NISN
+            // 
+            this.NISN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NISN.DataPropertyName = "nisn";
+            this.NISN.HeaderText = "NISN";
+            this.NISN.Name = "NISN";
+            this.NISN.ReadOnly = true;
+            this.NISN.Width = 72;
+            // 
+            // NIS
+            // 
+            this.NIS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NIS.DataPropertyName = "nis";
+            this.NIS.HeaderText = "NIS";
+            this.NIS.Name = "NIS";
+            this.NIS.ReadOnly = true;
+            this.NIS.Width = 61;
+            // 
+            // NamaSiswa
+            // 
+            this.NamaSiswa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NamaSiswa.DataPropertyName = "nama";
+            this.NamaSiswa.HeaderText = "Nama Siswa";
+            this.NamaSiswa.Name = "NamaSiswa";
+            this.NamaSiswa.ReadOnly = true;
+            this.NamaSiswa.Width = 122;
+            // 
+            // IDKelas
+            // 
+            this.IDKelas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDKelas.DataPropertyName = "id_kelas";
+            this.IDKelas.HeaderText = "ID Kelas";
+            this.IDKelas.Name = "IDKelas";
+            this.IDKelas.ReadOnly = true;
+            this.IDKelas.Width = 94;
+            // 
+            // Alamat
+            // 
+            this.Alamat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Alamat.DataPropertyName = "alamat";
+            this.Alamat.HeaderText = "Alamat";
+            this.Alamat.Name = "Alamat";
+            this.Alamat.ReadOnly = true;
+            this.Alamat.Width = 84;
+            // 
+            // NoTelepon
+            // 
+            this.NoTelepon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NoTelepon.DataPropertyName = "no_telp";
+            this.NoTelepon.HeaderText = "No Telepon";
+            this.NoTelepon.Name = "NoTelepon";
+            this.NoTelepon.ReadOnly = true;
+            this.NoTelepon.Width = 115;
+            // 
+            // IDSPP
+            // 
+            this.IDSPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDSPP.DataPropertyName = "id_spp";
+            this.IDSPP.HeaderText = "ID SPP";
+            this.IDSPP.Name = "IDSPP";
+            this.IDSPP.ReadOnly = true;
+            this.IDSPP.Width = 86;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
@@ -401,79 +464,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(395, 388);
             this.dataGridView2.TabIndex = 0;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(637, 147);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(96, 20);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Log Masuk";
-            // 
-            // NISN
-            // 
-            this.NISN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NISN.DataPropertyName = "nisn";
-            this.NISN.HeaderText = "NISN";
-            this.NISN.Name = "NISN";
-            this.NISN.ReadOnly = true;
-            this.NISN.Width = 72;
-            // 
-            // NIS
-            // 
-            this.NIS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NIS.DataPropertyName = "nis";
-            this.NIS.HeaderText = "NIS";
-            this.NIS.Name = "NIS";
-            this.NIS.ReadOnly = true;
-            this.NIS.Width = 61;
-            // 
-            // NamaSiswa
-            // 
-            this.NamaSiswa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NamaSiswa.DataPropertyName = "nama";
-            this.NamaSiswa.HeaderText = "Nama Siswa";
-            this.NamaSiswa.Name = "NamaSiswa";
-            this.NamaSiswa.ReadOnly = true;
-            this.NamaSiswa.Width = 122;
-            // 
-            // IDKelas
-            // 
-            this.IDKelas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDKelas.DataPropertyName = "id_kelas";
-            this.IDKelas.HeaderText = "ID Kelas";
-            this.IDKelas.Name = "IDKelas";
-            this.IDKelas.ReadOnly = true;
-            this.IDKelas.Width = 94;
-            // 
-            // Alamat
-            // 
-            this.Alamat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Alamat.DataPropertyName = "alamat";
-            this.Alamat.HeaderText = "Alamat";
-            this.Alamat.Name = "Alamat";
-            this.Alamat.ReadOnly = true;
-            this.Alamat.Width = 84;
-            // 
-            // NoTelepon
-            // 
-            this.NoTelepon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NoTelepon.DataPropertyName = "no_telp";
-            this.NoTelepon.HeaderText = "No Telepon";
-            this.NoTelepon.Name = "NoTelepon";
-            this.NoTelepon.ReadOnly = true;
-            this.NoTelepon.Width = 115;
-            // 
-            // IDSPP
-            // 
-            this.IDSPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDSPP.DataPropertyName = "id_spp";
-            this.IDSPP.HeaderText = "ID SPP";
-            this.IDSPP.Name = "IDSPP";
-            this.IDSPP.ReadOnly = true;
-            this.IDSPP.Width = 86;
-            // 
             // IDLog
             // 
             this.IDLog.DataPropertyName = "id_log";
@@ -508,6 +498,16 @@
             this.Waktu.Name = "Waktu";
             this.Waktu.ReadOnly = true;
             this.Waktu.Width = 80;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(637, 147);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(96, 20);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Log Masuk";
             // 
             // Form1
             // 

@@ -49,7 +49,7 @@ namespace SPP
                             {
                                 Form1 form1 = new Form1(this, sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString());
 
-                                sql_query.log(sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString(), "Log In");
+                                sql_query.log(sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString(), "Log In Admin");
                                 form1.logged_in(sql_query.logIn(textBox1.Text).Rows[0]["nama_petugas"].ToString());
                                 form1.Show();
                                 this.Hide();
@@ -57,7 +57,16 @@ namespace SPP
                             {
                                 Form2 petugas = new Form2();
 
-                                sql_query.log(sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString(), "Log In");
+                                string nama_petugas = "";
+                                for (int i = 0; i < sql_query.selectAll("data_user").Rows.Count; i++)
+                                {
+                                    if (i <= int.Parse(sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString()))
+                                    {
+                                        nama_petugas = sql_query.selectAll("data_user").Rows[i]["nama_petugas"].ToString();
+                                    }
+                                }
+
+                                sql_query.log(sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString(), $"Log In {nama_petugas}");
                                 petugas.Show();
                             }
                         } else
