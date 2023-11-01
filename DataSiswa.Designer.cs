@@ -41,6 +41,8 @@
             this.Alamat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoTelp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JumlahSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +68,9 @@
             this.IDKelas,
             this.Alamat,
             this.NoTelp,
-            this.IDSPP});
+            this.IDSPP,
+            this.JumlahSPP,
+            this.Status});
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -133,11 +137,12 @@
             // 
             // NamaSiswa
             // 
-            this.NamaSiswa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NamaSiswa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NamaSiswa.DataPropertyName = "nama";
             this.NamaSiswa.HeaderText = "Nama Siswa";
             this.NamaSiswa.Name = "NamaSiswa";
             this.NamaSiswa.ReadOnly = true;
+            this.NamaSiswa.Width = 122;
             // 
             // IDKelas
             // 
@@ -174,6 +179,24 @@
             this.IDSPP.Name = "IDSPP";
             this.IDSPP.ReadOnly = true;
             this.IDSPP.Width = 86;
+            // 
+            // JumlahSPP
+            // 
+            this.JumlahSPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.JumlahSPP.DataPropertyName = "jumlah_spp";
+            this.JumlahSPP.HeaderText = "Jumlah SPP";
+            this.JumlahSPP.Name = "JumlahSPP";
+            this.JumlahSPP.ReadOnly = true;
+            this.JumlahSPP.Width = 120;
+            // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Status.DataPropertyName = "status_pembayaran";
+            this.Status.HeaderText = "Status Pembayaran";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 159;
             // 
             // DataSiswa
             // 
@@ -215,5 +238,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Alamat;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoTelp;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDSPP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JumlahSPP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

@@ -49,6 +49,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -56,7 +59,7 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(385, 428);
+            this.button1.Location = new System.Drawing.Point(384, 538);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 43);
             this.button1.TabIndex = 19;
@@ -312,12 +315,42 @@
             this.label13.TabIndex = 30;
             this.label13.Text = "Nomor Telepon";
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(19, 414);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(507, 28);
+            this.comboBox2.TabIndex = 33;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 389);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(104, 20);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Tahun Ajaran";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(16, 445);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(125, 13);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "* masukkan tahun ajaran";
+            // 
             // TambahSiswa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(537, 483);
+            this.ClientSize = new System.Drawing.Size(537, 593);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label13);
@@ -375,5 +408,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }

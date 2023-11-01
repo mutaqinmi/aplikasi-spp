@@ -55,7 +55,7 @@ namespace SPP
                                 this.Hide();
                             } else
                             {
-                                Form2 petugas = new Form2();
+                                Form2 petugas = new Form2(this, sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString());
 
                                 string nama_petugas = "";
                                 for (int i = 0; i < sql_query.selectAll("data_user").Rows.Count; i++)
@@ -68,6 +68,7 @@ namespace SPP
 
                                 sql_query.log(sql_query.logIn(textBox1.Text).Rows[0]["id_petugas"].ToString(), $"Log In {nama_petugas}");
                                 petugas.Show();
+                                this.Hide();
                             }
                         } else
                         {

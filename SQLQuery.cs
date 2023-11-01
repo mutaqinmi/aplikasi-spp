@@ -152,37 +152,31 @@ namespace SPP
             string query = "";
             if(table_name == "data_siswa")
             {
-                query = $"INSERT INTO data_siswa VALUES ('{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '" + 1 + "')";
+                query = $"INSERT INTO data_siswa VALUES ('{data[0].ToString()}', '{data[1].ToString()}', '{data[2].ToString()}', '{data[3].ToString()}', '{data[4].ToString()}', '{data[5].ToString()}', '{data[6].ToString()}', '{data[7].ToString()}', 'belum lunas')";
             } else if (table_name == "data_user")
             {
-                query = $"INSERT INTO data_user VALUES (NULL, '{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}')";
+                query = $"INSERT INTO data_user VALUES (NULL, '{data[0].ToString()}', '{data[1].ToString()}', '{data[2].ToString()}', '{data[3].ToString()}')";
             }
             MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
-            try
+            if (!data.Contains(string.Empty))
             {
-                if (!data.Contains(""))
+                command.ExecuteNonQuery();
+                if (table_name == "data_siswa")
                 {
-                    command.ExecuteNonQuery();
-                    if (table_name == "data_siswa")
-                    {
-                        log(mainform.id_user(), $"Insert siswa {data[2]}");
-                    }
-                    else if (table_name == "data_user")
-                    {
-                        log(mainform.id_user(), $"Insert petugas {data[2]}");
-                    }
+                    log(mainform.id_user(), $"Insert siswa {data[2].ToString()}");
+                }
+                else if (table_name == "data_user")
+                {
+                    log(mainform.id_user(), $"Insert petugas {data[2].ToString()}");
+                }
 
-                    MessageBox.Show("Data berhasil ditambahkan!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    refreshData(mainform, null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Masukkan data dengan benar!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            } catch (Exception ex)
+                MessageBox.Show("Data berhasil ditambahkan!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                refreshData(mainform, null, null);
+            } else
             {
                 MessageBox.Show("Masukkan data dengan benar!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         public void deleteData(string table_name, string id_variable, string id, string nama, Form1 main, DataSiswa main_siswa, DataPetugas main_petugas)
