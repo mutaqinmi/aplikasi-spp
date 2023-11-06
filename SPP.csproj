@@ -99,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DataPembayaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataPembayaran.Designer.cs">
+      <DependentUpon>DataPembayaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataPetugas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <Compile Include="UpdatePetugas.Designer.cs">
       <DependentUpon>UpdatePetugas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DataPembayaran.resx">
+      <DependentUpon>DataPembayaran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataPetugas.resx">
       <DependentUpon>DataPetugas.cs</DependentUpon>
     </EmbeddedResource>
