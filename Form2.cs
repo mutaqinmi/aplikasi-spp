@@ -15,8 +15,6 @@ namespace SPP
     {
         public SQLQuery sqlquery = new SQLQuery();
         public LogIn login = null;
-        public string jumlah_spp = "";
-        public string id_spp = "";
         public string id = "";
         public string id_user() { return id; }
 
@@ -34,10 +32,9 @@ namespace SPP
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*jumlah_spp = sqlquery.selectAll("data_spp").Rows[i]["jumlah_spp"].ToString();
-            id_spp = sqlquery.selectAll("data_spp").Rows[i]["id_spp"].ToString();*/
+            DataTable data_siswa = sqlquery.search("data_siswa", comboBox1.Text);
 
-            textBox4.Text = comboBox1.Text;
+            textBox4.Text = data_siswa.Rows[0]["jumlah_spp"].ToString();
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -54,6 +51,26 @@ namespace SPP
                 comboBox1.Items.Add(sqlquery.search("data_siswa", comboBox1.Text).Rows[i]["nama"].ToString());
                 comboBox1.DroppedDown = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataTable data_siswa = sqlquery.search("data_siswa", comboBox1.Text);
+
+            string nama_siswa = data_siswa.Rows[0]["nama"].ToString();
+            string id_petugas = id;
+            string nisn = data_siswa.Rows[0]["nisn"].ToString();
+            string tgl_bayar = comboBox2.Text;
+            string bln_bayar = comboBox3.Text;
+            string thn_bayar = textBox3.Text;
+            string id_spp = data_siswa.Rows[0]["id_spp"].ToString();
+            string jumlah_bayar = textBox5.Text;
+
+            int jumlah = int.Parse(textBox4.Text) - int.Parse(textBox5.Text);
+
+            object[] data_bayar = { id, nisn, tgl_bayar, bln_bayar, thn_bayar, id_spp, jumlah_bayar };
+
+            sqlquery.bayar(id_petugas, data_bayar, nama_siswa, jumlah);
         }
     }
 }

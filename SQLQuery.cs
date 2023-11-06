@@ -152,10 +152,13 @@ namespace SPP
             string query = "";
             if(table_name == "data_siswa")
             {
-                query = $"INSERT INTO data_siswa VALUES ('{data[0].ToString()}', '{data[1].ToString()}', '{data[2].ToString()}', '{data[3].ToString()}', '{data[4].ToString()}', '{data[5].ToString()}', '{data[6].ToString()}', '{data[7].ToString()}', 'belum lunas')";
+                query = $"INSERT INTO data_siswa VALUES ('{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '{data[6]}', '{data[7]}', 'belum lunas')";
             } else if (table_name == "data_user")
             {
-                query = $"INSERT INTO data_user VALUES (NULL, '{data[0].ToString()}', '{data[1].ToString()}', '{data[2].ToString()}', '{data[3].ToString()}')";
+                query = $"INSERT INTO data_user VALUES (NULL, '{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}')";
+            } else if (table_name == "data_pembayaran")
+            {
+                query = $"INSERT INTO data_pembayaran VALUES (NULL, '{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '{data[6]}')";
             }
             MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
             if (!data.Contains(string.Empty))
@@ -163,15 +166,18 @@ namespace SPP
                 command.ExecuteNonQuery();
                 if (table_name == "data_siswa")
                 {
-                    log(mainform.id_user(), $"Insert siswa {data[2].ToString()}");
+                    log(mainform.id_user(), $"Insert siswa {data[2]}");
                 }
                 else if (table_name == "data_user")
                 {
-                    log(mainform.id_user(), $"Insert petugas {data[2].ToString()}");
+                    log(mainform.id_user(), $"Insert petugas {data[2]}");
                 }
 
                 MessageBox.Show("Data berhasil ditambahkan!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                refreshData(mainform, null, null);
+                if (table_name != "data_pembayaran")
+                {
+                    refreshData(mainform, null, null);
+                }
             } else
             {
                 MessageBox.Show("Masukkan data dengan benar!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -241,6 +247,18 @@ namespace SPP
             }
             refreshData(mainform, null, mainform_petugas);
             refreshDetailPetugas(mainform_detail_petugas);
+        }
+
+        public void bayar(string id_petugas, object[] data_bayar, string nama_siswa, int jumlah)
+        {
+            insert("data_pembayaran", data_bayar, null);
+
+            string query = $"UPDATE data_siswa SET jumlah_spp = '{jumlah}' WHERE nisn = '{data_bayar[1]}'";
+            MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
+            command.ExecuteNonQuery();
+            log(id_petugas, $"Bayar {nama_siswa}");
+            
+            MessageBox.Show("Pembayaran berhasil!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
