@@ -18,11 +18,15 @@ namespace SPP
         public string id = "";
         public string id_user() { return id; }
 
-        public Form2(LogIn main, string id_petugas)
+        public Form2(LogIn main, string id_petugas, string nama_petugas)
         {
             InitializeComponent();
             this.login = main;
             id = id_petugas;
+            label12.Text = nama_petugas;
+            label14.Text = sqlquery.selectAll("data_pembayaran").Rows.Count.ToString();
+            label16.Text = sqlquery.selectAll("data_siswa").Rows.Count.ToString();
+            dataGridView1.DataSource = sqlquery.selectAll("data_pembayaran");
 
             for (int i = 0; i < sqlquery.selectAll("data_siswa").Rows.Count; i++)
             {
@@ -33,6 +37,23 @@ namespace SPP
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable data_siswa = sqlquery.search("data_siswa", comboBox1.Text);
+
+            if(data_siswa.Rows[0]["status_pembayaran"].ToString() == "lunas")
+            {
+                MessageBox.Show($"SPP {data_siswa.Rows[0]["nama"]} sudah lunas!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                button1.Enabled = false;
+                comboBox2.Enabled = false;
+                comboBox3.Enabled = false;
+                textBox3.Enabled = false;
+                textBox5.Enabled = false;
+            } else
+            {
+                button1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                textBox3.Enabled = true;
+                textBox5.Enabled = true;
+            }
 
             textBox4.Text = data_siswa.Rows[0]["jumlah_spp"].ToString();
         }
@@ -71,6 +92,25 @@ namespace SPP
             object[] data_bayar = { id, nisn, tgl_bayar, bln_bayar, thn_bayar, id_spp, jumlah_bayar };
 
             sqlquery.bayar(id_petugas, data_bayar, nama_siswa, jumlah);
+
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            comboBox3.SelectedIndex = -1;
+            textBox3.Clear();
+            textBox5.Clear();
+            label14.Text = sqlquery.selectAll("data_pembayaran").Rows.Count.ToString();
+            dataGridView1.DataSource = sqlquery.selectAll("data_pembayaran");
+        }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+            DataSiswa data_siswa = new DataSiswa(null);
+            data_siswa.ShowDialog();
+        }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

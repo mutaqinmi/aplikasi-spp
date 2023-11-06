@@ -50,6 +50,9 @@ namespace SPP
             } else if (table_name == "data_log")
             {
                 orderby = $" ORDER BY waktu DESC LIMIT 20";
+            } else if (table_name == "data_pembayaran")
+            {
+                orderby = $" ORDER BY tgl_bayar LIMIT 20";
             }
             string query = $"SELECT * FROM {table_name}" + orderby;
             MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
@@ -173,9 +176,9 @@ namespace SPP
                     log(mainform.id_user(), $"Insert petugas {data[2]}");
                 }
 
-                MessageBox.Show("Data berhasil ditambahkan!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (table_name != "data_pembayaran")
                 {
+                    MessageBox.Show("Data berhasil ditambahkan!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     refreshData(mainform, null, null);
                 }
             } else
@@ -253,12 +256,25 @@ namespace SPP
         {
             insert("data_pembayaran", data_bayar, null);
 
-            string query = $"UPDATE data_siswa SET jumlah_spp = '{jumlah}' WHERE nisn = '{data_bayar[1]}'";
-            MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
-            command.ExecuteNonQuery();
-            log(id_petugas, $"Bayar {nama_siswa}");
+            if(jumlah >= 0)
+            {
+                string query = "";
+                if(jumlah == 0)
+                {
+                    query = $"UPDATE data_siswa SET jumlah_spp = '{jumlah}', status_pembayaran = 'lunas' WHERE nisn = '{data_bayar[1]}'";
+                } else
+                {
+                    query = $"UPDATE data_siswa SET jumlah_spp = '{jumlah}' WHERE nisn = '{data_bayar[1]}'";
+                }
+                MySqlCommand command = new MySqlCommand(query, Program.Conn.Connection);
+                command.ExecuteNonQuery();
+                log(id_petugas, $"Bayar {nama_siswa}");
             
-            MessageBox.Show("Pembayaran berhasil!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Pembayaran berhasil!", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else
+            {
+                MessageBox.Show("Masukkan jumlah yang sesuai!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

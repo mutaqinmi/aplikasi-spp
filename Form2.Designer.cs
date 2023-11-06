@@ -46,6 +46,31 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IDPembayaran = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDPetugas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NISN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TglBayar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BlnBayar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TahunBayar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JumlahBayar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -122,9 +147,9 @@
             // textBox4
             // 
             this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(19, 314);
+            this.textBox4.Location = new System.Drawing.Point(55, 314);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(218, 26);
+            this.textBox4.Size = new System.Drawing.Size(182, 26);
             this.textBox4.TabIndex = 22;
             // 
             // label6
@@ -256,12 +281,219 @@
             this.comboBox3.Size = new System.Drawing.Size(144, 28);
             this.comboBox3.TabIndex = 31;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(15, 317);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 20);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Rp.";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.Controls.Add(this.label12);
+            this.panel5.Controls.Add(this.label13);
+            this.panel5.ForeColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(483, 12);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(337, 100);
+            this.panel5.TabIndex = 33;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(16, 44);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(121, 31);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Petugas";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(18, 24);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 20);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Halo,";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.ForeColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(655, 118);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(165, 100);
+            this.panel2.TabIndex = 6;
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(21, 24);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 33);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(23, 57);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(77, 20);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Transaksi";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.ForeColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(483, 118);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(165, 100);
+            this.panel3.TabIndex = 5;
+            this.panel3.Click += new System.EventHandler(this.panel3_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(16, 24);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 33);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "0";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(18, 57);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(51, 20);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Siswa";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Location = new System.Drawing.Point(483, 224);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(337, 227);
+            this.panel4.TabIndex = 34;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDPembayaran,
+            this.IDPetugas,
+            this.NISN,
+            this.TglBayar,
+            this.BlnBayar,
+            this.TahunBayar,
+            this.IDSPP,
+            this.JumlahBayar});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(337, 227);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // IDPembayaran
+            // 
+            this.IDPembayaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPembayaran.DataPropertyName = "id_pembayaran";
+            this.IDPembayaran.HeaderText = "ID Pembayaran";
+            this.IDPembayaran.Name = "IDPembayaran";
+            this.IDPembayaran.ReadOnly = true;
+            this.IDPembayaran.Visible = false;
+            // 
+            // IDPetugas
+            // 
+            this.IDPetugas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPetugas.DataPropertyName = "id_petugas";
+            this.IDPetugas.HeaderText = "ID Petugas";
+            this.IDPetugas.Name = "IDPetugas";
+            this.IDPetugas.ReadOnly = true;
+            this.IDPetugas.Width = 114;
+            // 
+            // NISN
+            // 
+            this.NISN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NISN.DataPropertyName = "nisn";
+            this.NISN.HeaderText = "NISN";
+            this.NISN.Name = "NISN";
+            this.NISN.ReadOnly = true;
+            this.NISN.Width = 72;
+            // 
+            // TglBayar
+            // 
+            this.TglBayar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TglBayar.DataPropertyName = "tgl_bayar";
+            this.TglBayar.HeaderText = "Tanggal";
+            this.TglBayar.Name = "TglBayar";
+            this.TglBayar.ReadOnly = true;
+            this.TglBayar.Width = 91;
+            // 
+            // BlnBayar
+            // 
+            this.BlnBayar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BlnBayar.DataPropertyName = "bulan_dibayar";
+            this.BlnBayar.HeaderText = "Bulan";
+            this.BlnBayar.Name = "BlnBayar";
+            this.BlnBayar.ReadOnly = true;
+            this.BlnBayar.Width = 75;
+            // 
+            // TahunBayar
+            // 
+            this.TahunBayar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TahunBayar.DataPropertyName = "tahun_dibayar";
+            this.TahunBayar.HeaderText = "Tahun";
+            this.TahunBayar.Name = "TahunBayar";
+            this.TahunBayar.ReadOnly = true;
+            this.TahunBayar.Width = 79;
+            // 
+            // IDSPP
+            // 
+            this.IDSPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDSPP.DataPropertyName = "id_spp";
+            this.IDSPP.HeaderText = "ID SPP";
+            this.IDSPP.Name = "IDSPP";
+            this.IDSPP.ReadOnly = true;
+            this.IDSPP.Width = 86;
+            // 
+            // JumlahBayar
+            // 
+            this.JumlahBayar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.JumlahBayar.DataPropertyName = "jumlah_bayar";
+            this.JumlahBayar.HeaderText = "Jumlah Bayar";
+            this.JumlahBayar.Name = "JumlahBayar";
+            this.JumlahBayar.ReadOnly = true;
+            this.JumlahBayar.Width = 130;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(832, 463);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button1);
@@ -288,6 +520,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Petugas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +553,25 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDPembayaran;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDPetugas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NISN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TglBayar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BlnBayar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TahunBayar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDSPP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JumlahBayar;
     }
 }

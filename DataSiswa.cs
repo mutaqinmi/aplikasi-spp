@@ -52,20 +52,24 @@ namespace SPP
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            foreach(DataRow row in sqlquery.selectAll("data_siswa").Rows){
-                if (row["nisn"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["nis"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["nama"].ToString() == dataGridView1.SelectedCells[0].Value.ToString())
+            if(mainform != null)
+            {
+                foreach (DataRow row in sqlquery.selectAll("data_siswa").Rows)
                 {
-                    string data_nisn = row["nisn"].ToString();
-                    string data_nis = row["nis"].ToString();
-                    string data_nama = row["nama"].ToString();
-                    string data_id_kelas = row["id_kelas"].ToString();
-                    string data_alamat = row["alamat"].ToString();
-                    string data_no_telp = row["no_telp"].ToString();
-                    string data_id_spp = row["id_spp"].ToString();
+                    if (row["nisn"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["nis"].ToString() == dataGridView1.SelectedCells[0].Value.ToString() || row["nama"].ToString() == dataGridView1.SelectedCells[0].Value.ToString())
+                    {
+                        string data_nisn = row["nisn"].ToString();
+                        string data_nis = row["nis"].ToString();
+                        string data_nama = row["nama"].ToString();
+                        string data_id_kelas = row["id_kelas"].ToString();
+                        string data_alamat = row["alamat"].ToString();
+                        string data_no_telp = row["no_telp"].ToString();
+                        string data_id_spp = row["id_spp"].ToString();
 
-                    // mengirim data ke window detail siswa
-                    var detail_siswa = new DetailSiswa(data_nisn, data_nis, data_nama, data_id_kelas, data_alamat, data_no_telp, data_id_spp, mainform, this);
-                    detail_siswa.ShowDialog();
+                        // mengirim data ke window detail siswa
+                        var detail_siswa = new DetailSiswa(data_nisn, data_nis, data_nama, data_id_kelas, data_alamat, data_no_telp, data_id_spp, mainform, this);
+                        detail_siswa.ShowDialog();
+                    }
                 }
             }
         }
