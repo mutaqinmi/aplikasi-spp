@@ -42,6 +42,7 @@ namespace SPP
             {
                 MessageBox.Show($"SPP {data_siswa.Rows[0]["nama"]} sudah lunas!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 button1.Enabled = false;
+                button1.Visible = false;
                 comboBox2.Enabled = false;
                 comboBox3.Enabled = false;
                 textBox3.Enabled = false;
@@ -49,6 +50,7 @@ namespace SPP
             } else
             {
                 button1.Enabled = true;
+                button1.Visible = true;
                 comboBox2.Enabled = true;
                 comboBox3.Enabled = true;
                 textBox3.Enabled = true;
@@ -110,7 +112,8 @@ namespace SPP
 
         private void panel2_Click(object sender, EventArgs e)
         {
-
+            DataTransaksi data_transaksi = new DataTransaksi();
+            data_transaksi.ShowDialog();
         }
     }
 }

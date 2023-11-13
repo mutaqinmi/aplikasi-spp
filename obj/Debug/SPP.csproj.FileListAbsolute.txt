@@ -96,3 +96,4 @@ C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DetailPetugas.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.UpdatePetugas.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DataTransaksi.resources
 C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.Form2.resources
+C:\Users\Qi\source\repos\SPP\obj\Debug\SPP.DataPembayaran.resources
